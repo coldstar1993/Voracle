@@ -125,7 +125,9 @@ So to run the whole *baby* Voracle,  steps are as belows:
   * download this repo to local disk, and Install it respectively.
   * step into **Voracle Fetcher** && **Voracle Aggregator**,run as below:
     * `npm run dev`
+
 Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start!
+
 During runtime, **Voracle Aggregator** will forwards zkapp requests to 3 **Voracle Fetcher**.
 
 And then, step into **Voracle-ui** consists of serveral zkapps for use cases, run `npm run start`, it will start now.
