@@ -78,38 +78,29 @@ Currently, Voracle **as a baby** consists of:
 * **Voracle Aggregator**, acting as API gateway for Unified entrance of All zkApps, And also as Aggregator for responses from various *Voracle Fetcher Nodes*.
 * **Voracle Fetcher Nodes**,  acting as Providers within Voracle Platform, Connecting with External DataSource, and return result with their respective signature.
 * **Voracle Tool**, acting as dependency providing for all zkApps looking for Oracle service from Voracle, such as invoking request to Voracle Gateway, as well as Voracle Contract Verifying data responded from each *Voracle Fetcher Nodes*.
-* **Voracle UI**, consisting of Voracle website making a presentation of all Info (service quality, service status, fetcher nodes status, etc. ) of Voracle Platform. And also Integrate some interesting **Use Cases** on the Page for showcases of Voracle.
+* **Voracle UI**, consisting of Voracle website making a presentation of all Info (service quality, service status, fetcher nodes status, etc. ) of Voracle Platform. And also Integrate some interesting **zkApp for Use Cases** on the Page for showcases of Voracle.
 
 ## Integrate with Voracle
 To integrate with Voracle, You first had better go to the repo belows:
 
-* Voracle Aggregator:  https://www.github.com/coldstar1993/v
-
-* Voracle Fetcher: https://www.github.com/coldstar1993/v
-
-* Voracle Tool&Libs: https://www.github.com/coldstar1993/v
-
-* Voracle zkApp: https://www.github.com/coldstar1993/v
+* Voracle Contracts:  https://github.com/coldstar1993/Voracle/tree/main/Voracle-contract
+* Voracle Aggregator:  https://github.com/coldstar1993/Voracle/tree/main/Voracle-aggregator
+* Voracle Fetcher: https://github.com/coldstar1993/Voracle/tree/main/Voracle-fetcher
+* Voracle Tool&Libs: https://github.com/coldstar1993/Voracle/tree/main/Voralce-tool
+* Voracle ui: https://github.com/coldstar1993/Voracle/tree/main/Voracle-ui 
 
 All You project need to do is to integrate **Voracle Tool&Libs** which provide capabilities of looking for Oracle service from Voracle, such as invoking request to **Voracle Aggregator**, as well as Voracle Contract Verifying data responded from each **Voracle Fetcher Nodes** and so on.
 
-To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not been published to public NPM repo. So, to make a dependency on it,  You could just copy the key component as a package into your project,
+To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet been published to public NPM repo. So, to make a dependency on it,  You could just copy the key component as a package into your project,
 
-* You could just import the key contract--*VoracleVerifier.ts* into your files,  then compile it & leverage it!! ( UseCase Demo is *run_VoracleVerifier.ts*)
+* You could just import the key contract--*VoracleVerifier.ts* into your files,  then compile it & leverage it!! ( UseCase Demo is *run_VoracleVerifier.ts* in [Voracle Contracts](./Voracle-contract))
 * You could just import the key utility *VoralceUtil.ts* including complete api to invoke  **Voracle Aggregator** for current supported service into your files.
 
 
 ## How to run Voracle Locally
-Currently, There are fixed amount of **Voracle Fetcher**  registered into the **Voracle Contract**, which you could directly find inside the  contract file *Voracle.ts*. Therefore, During Mina Activity, You could easily boot the whole Voracle Service Locally.
+Currently, There are fixed amount(=3) of **Voracle Fetcher**  registered into the **Voracle Contract**, which you could directly find inside the  contract file *Voracle.ts*. Therefore, During Mina Activity, You could easily boot the whole Voracle Service Locally.
 
-So to run the whole *baby* Voracle,  steps are as belows:
-
-* download this repo to local disk, and Install it respectively.
-
-* step into **Voracle Fetcher** , config env as below:
-
-  
-
+The below are the key pairs respectively for each **Voracle Fetcher**
   ```
   EKF9DU363vSSFnp2reh3EeeQYPJBbVWhtU11WxtKpMpf55jPZ3hN
   B62qikWxvd7g3smTA6vDEPqeXDnP6LnxU46gKFmB9rdC8ohdnPu1AoL
@@ -120,14 +111,28 @@ So to run the whole *baby* Voracle,  steps are as belows:
   EKFTVCvBQKqBd5vGwpqCGyPUEBq6gnrLPYeGDLHAtRdRB8fm2LFL
   B62qooLE6R54n9vBkqf5N2w4kzB3ZSvGRXcXATXnX86kpiFp7jCDd7r
   ```
+, and the key pairs are respectively configured as Env:`FETCHER_PRIV_KEY` into the Boot Command inside *[package.json](./Voracle-fetcher/package.json)* within **Voracle Fetcher**
+  ```
+    "dev:start-fetcher0": "cross-env NODE_ENV=development SERVER_PORT=3000 FETCHER_PUB_KEY_IDX=0 FETCHER_PRIV_KEY=EKF9DU363vSSFnp2reh3EeeQYPJBbVWhtU11WxtKpMpf55jPZ3hN nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
 
-* `npm run dev`
+    "dev:start-fetcher1": "cross-env NODE_ENV=development SERVER_PORT=3001 FETCHER_PUB_KEY_IDX=1 FETCHER_PRIV_KEY=EKEyRQWVRPKLcafRzNMvbfUTDSRowXii8xUTCkc9839X1MUqNA81 nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
 
+    "dev:start-fetcher2": "cross-env NODE_ENV=development SERVER_PORT=3002 FETCHER_PUB_KEY_IDX=2 FETCHER_PRIV_KEY=EKFTVCvBQKqBd5vGwpqCGyPUEBq6gnrLPYeGDLHAtRdRB8fm2LFL nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
 
+  ```
 
+So to run the whole *baby* Voracle,  steps are as belows:
+  * download this repo to local disk, and Install it respectively.
+  * step into **Voracle Fetcher** && **Voracle Aggregator**,run as below:
+    * `npm run dev`
+Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start!
+During runtime, **Voracle Aggregator** will forwards zkapp requests to 3 **Voracle Fetcher**.
+
+And then, step into **Voracle-ui** consists of serveral zkapps for use cases, run `npm run start`, it will start now.
 
 ## The RoadMap of Voracle
-TODO
+// TODO //TODO //TODO
+* support graphQL endpoint
 * tokens for staking & fee
 * become an Oracle NETWORK
 
