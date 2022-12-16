@@ -74,16 +74,16 @@ Initial Stage, Voracle Network is still a little baby, Providing common services
 ![voracle-tech-arch](./pic/voracle-tech-arch.png)
 
 Currently, Voracle **as a baby** consists of:
-* **Voracle Contracts**, consisting of contracts storing all Info of current registered *Fetcher Nodes*.
-* **Voracle Aggregator**, acting as API gateway for Unified entrance of All zkApps, And also as Aggregator for responses from various *Voracle Fetcher Nodes*.
+
+* **Voracle Gateway**, acting as API gateway for Unified entrance of All zkApps, And also as Aggregator for responses from various *Voracle Fetcher Nodes*.
 * **Voracle Fetcher Nodes**,  acting as Providers within Voracle Platform, Connecting with External DataSource, and return result with their respective signature.
-* **Voracle Tool**, acting as dependency providing for all zkApps looking for Oracle service from Voracle, such as invoking request to Voracle Gateway, as well as Voracle Contract Verifying data responded from each *Voracle Fetcher Nodes*.
-* **Voracle UI**, consisting of Voracle website making a presentation of all Info (service quality, service status, fetcher nodes status, etc. ) of Voracle Platform. And also Integrate some interesting **Use Cases** on the Page for showcases of Voracle.
+* **Voracle tool libs**, acting as dependency providing for all zkApps looking for Oracle service from Voracle, such as invoking request to Voracle Gateway, as well as Voracle Contract Verifying data responded from each *Voracle Fetcher Nodes*.
+* **Voracle zkApp**, consisting of contracts & website, storing all Info of current registered *Fetcher Nodes* and make a presentation of all Info (service quality, service status, fetcher nodes status, etc. ) of Voracle Platform.
 
 ## Integrate with Voracle
 To integrate with Voracle, You first had better go to the repo belows:
 
-* Voracle Aggregator:  https://www.github.com/coldstar1993/v
+* Voracle Gateway:  https://www.github.com/coldstar1993/v
 
 * Voracle Fetcher: https://www.github.com/coldstar1993/v
 
@@ -91,12 +91,12 @@ To integrate with Voracle, You first had better go to the repo belows:
 
 * Voracle zkApp: https://www.github.com/coldstar1993/v
 
-All You project need to do is to integrate **Voracle Tool&Libs** which provide capabilities of looking for Oracle service from Voracle, such as invoking request to **Voracle Aggregator**, as well as Voracle Contract Verifying data responded from each **Voracle Fetcher Nodes** and so on.
+All You project need to do is to integrate **Voracle Tool&Libs** which provide capabilities of looking for Oracle service from Voracle, such as invoking request to **Voracle Gateway**, as well as Voracle Contract Verifying data responded from each **Voracle Fetcher Nodes** and so on.
 
 To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not been published to public NPM repo. So, to make a dependency on it,  You could just copy the key component as a package into your project,
 
 * You could just import the key contract--*VoracleVerifier.ts* into your files,  then compile it & leverage it!! ( UseCase Demo is *run_VoracleVerifier.ts*)
-* You could just import the key utility *VoralceUtil.ts* including complete api to invoke  **Voracle Aggregator** for current supported service into your files.
+* You could just import the key utility *VoralceUtil.ts* including complete api to invoke  **Voracle Gateway** for current supported service into your files.
 
 
 ## How to run Voracle Locally
@@ -104,7 +104,7 @@ Currently, There are fixed amount of **Voracle Fetcher**  registered into the **
 
 So to run the whole *baby* Voracle,  steps are as belows:
 
-* download this repo to local disk, and Install it respectively.
+* download **Voracle Fetcher** & **Voracle Gateway** repo to local disk, and Install it respectively.
 
 * step into **Voracle Fetcher** , config env as below:
 
