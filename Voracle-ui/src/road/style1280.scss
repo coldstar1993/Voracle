@@ -1,0 +1,68 @@
+@media only screen and (min-width: 1280px) and (max-width: 1679px) {
+  .road {
+    padding-bottom: 118*0.76190476px;
+    .road-con {
+      width: 1640*0.76190476px;
+    }
+
+    .road-con-header {
+      img {
+        margin-bottom: 16*0.76190476px;
+      }
+    }
+
+    .title {
+      margin-bottom: 16*0.76190476px;
+    }
+
+    .desc {
+      margin-bottom: 95*0.76190476px;
+    }
+
+    .warp {
+      &::after {
+        top: 112*0.76190476px;
+      }
+      .item {
+        .road-title {
+          font-size: 34*0.76190476px;
+
+          span {
+            margin-left: 10*0.76190476px;
+            width: 100*0.76190476px;
+            height: 50*0.76190476px;
+            line-height: 50*0.76190476px;
+            box-shadow: 0*0.76190476px 5*0.76190476px 15*0.76190476px rgba(29, 31, 117, 0.15);
+            border-radius: 26*0.76190476px;
+          }
+        }
+
+        .road-info {
+          margin-top: 62*0.76190476px;
+          margin-bottom: 28*0.76190476px;
+          height: 0*0.76190476px;
+          img {
+            width: 62*0.76190476px;
+            height: 62*0.76190476px;
+            top: -32*0.76190476px;
+          }
+        }
+
+        .road-text {
+          margin-top: 28*0.76190476px;
+          width: 365*0.76190476px;
+          p {
+            padding: 12*0.76190476px 6*0.76190476px 9*0.76190476px 11*0.76190476px;
+            box-shadow: 0px 10*0.76190476px 18*0.76190476px rgba(29, 31, 117, 0.1);
+            border-radius: 10*0.76190476px;
+            font-size: 24*0.76190476px;
+            line-height: 23*0.76190476px;
+            &:not(:first-child) {
+              margin-top: 11*0.76190476px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

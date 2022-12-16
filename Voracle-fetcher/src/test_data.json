@@ -1,0 +1,96 @@
+[
+    {
+      "name": "tutu.mina", 
+      "publicKey": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e", 
+      "records": [
+        {
+          "key": "address.mina", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e"
+        }, 
+        {
+          "key": "address.eth", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "0x6100822CB4b56ba17626BAe972d242c0C1C4507a"
+        }
+      ]
+    },
+    {
+        "name": "meme.mina", 
+        "publicKey": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e", 
+        "records": [
+          {
+            "key": "address.mina", 
+            "kind": "address", 
+            "label": "my wallet", 
+            "ttl": 300, 
+            "value": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e"
+          }, 
+          {
+            "key": "address.eth", 
+            "kind": "address", 
+            "label": "my wallet", 
+            "ttl": 300, 
+            "value": "0x6100822CB4b56ba17626BAe972d242c0C1C4507a"
+          }
+        ]
+    },
+    {
+      "name": "momoda.mina", 
+      "publicKey": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e", 
+      "records": [
+        {
+          "key": "address.mina", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e"
+        }, 
+        {
+          "key": "address.eth", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "0x6100822CB4b56ba17626BAe972d242c0C1C4507a"
+        },
+        {
+          "key": "profile.twitter", 
+          "kind": "profile", 
+          "label": "my twitter", 
+          "ttl": 300, 
+          "value": "@plus3labs"
+        }
+      ]
+    },
+    {
+      "name": "dapp.mina", 
+      "publicKey": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e", 
+      "records": [
+        {
+          "key": "address.mina", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "B62qmQsEHcsPUs5xdtHKjEmWqqhUPRSF2GNmdguqnNvpEZpKftPC69e"
+        }, 
+        {
+          "key": "address.eth", 
+          "kind": "address", 
+          "label": "my wallet", 
+          "ttl": 300, 
+          "value": "0x6100822CB4b56ba17626BAe972d242c0C1C4507a"
+        },
+        {
+          "key": "profile.discord", 
+          "kind": "profile", 
+          "label": "my discord id", 
+          "ttl": 300, 
+          "value": "dapp#002"
+        }
+      ]
+    }
+]

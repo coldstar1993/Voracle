@@ -1,0 +1,64 @@
+@media only screen and  (min-width: 1280px) and (max-width: 1679px) {
+#root.cn{
+  .technology{
+    padding-bottom: 70px;
+  }
+}
+.technology {
+    height: 791*0.76190476px;
+    top: -262*0.76190476px;
+    .title{
+        margin-bottom: 28*0.76190476px;
+    }
+    .technology-con {
+        width: 1680*0.76190476px;
+        padding: 162*0.76190476px 0 0;
+
+        .con {
+            .warp {
+
+                .item {
+                    width: 319*0.76190476px;
+                    height: 465*0.76190476px;
+                    box-shadow: 7*0.76190476px 21*0.76190476px 18*0.76190476px rgba(29, 31, 117, 0.15);
+                    border-radius: 15*0.76190476px;
+                    &:not(:first-child) {
+                        margin-left: 12*0.76190476px;
+                    }
+
+                    .front {
+
+                        img {
+                            width: 169*0.76190476px;
+                            height: 169*0.76190476px;
+                            margin-top: 73*0.76190476px;
+                        }
+
+                        h2 {
+                            margin-top: 42*0.76190476px;
+                            font-size: 27*0.76190476px;
+                            line-height: 36*0.76190476px;
+                            margin-bottom: 61*0.76190476px;
+
+                        }
+                    }
+
+                    .back {
+                        border-radius: 15*0.76190476px;
+                        padding: 0 32*0.76190476px;
+                        font-size: 20*0.76190476px;
+                        line-height: 28*0.76190476px;
+                        .info {
+                            margin: 51*0.76190476px auto 30*0.76190476px;
+                        }
+                    }
+
+                    .info {
+                        width: 83*0.76190476px;
+                    }
+                }
+            }
+        }
+    }
+}
+}

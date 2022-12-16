@@ -1,0 +1,246 @@
+.foot {
+  position: relative;
+
+  .foot-con {
+    display: flex;
+    text-align: left;
+    width: 1640px;
+    margin: 10px auto 70px;
+    color: #363872;
+    font-size: 20px;
+
+    .foot-title {
+      font-weight: bold;
+      color: #1d1f75;
+      font-size: 25px;
+      padding-top: 30px;
+      margin-bottom: 45px;
+    }
+
+    .about {
+      width: 505px;
+
+      .about-desc {
+        width: 405px;
+        line-height: 33px;
+      }
+
+      .about-email {
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 31.5px;
+          height: 21px;
+          margin-right: 5px;
+        }
+        a {
+          color: #1d1f75;
+          text-decoration: none;
+        }
+      }
+    }
+    .emailTip {
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 30px;
+      color: #c50000;
+    }
+
+    .link {
+      width: 330px;
+
+      .link-item {
+        margin-top: 20px;
+
+        a {
+          color: #363872;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .resources {
+      width: 300px;
+    }
+
+    .subscribe {
+      .subscribe-desc {
+        width: 472px;
+        line-height: 33px;
+      }
+
+      .send {
+        display: flex;
+        margin-top: 35px;
+        width: 508px;
+        height: 60px;
+        border: 2px solid #707070;
+        box-shadow: 0px 3px 3px rgba(0, 6, 166, 0.12);
+        border-radius: 36px;
+
+        input {
+          border-radius: 36px;
+          flex: 1;
+          font-size: 20px;
+          height: 60px;
+          border: none;
+          color: #363872;
+          outline: none;
+          line-height: 60px;
+          padding-left: 30px;
+        }
+
+        span {
+          cursor: pointer;
+          position: relative;
+          top: -2px;
+          right: -5px;
+          width: 140px;
+          display: inline-block;
+          height: 65px;
+          text-align: center;
+          color: #fff;
+          font-size: 20px;
+          line-height: 65px;
+          background: #1195f0;
+          border-radius: 100px;
+          &:hover {
+            background: #363872;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    height: 60px;
+    line-height: 60px;
+    background: #1d1f75;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  .alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    .alert-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    .alert-content {
+      padding: 64px 122px;
+      position: relative;
+      z-index: 1002;
+      width: 714px;
+      height: 162px;
+      background: #ffffff;
+      box-shadow: 0px 10px 18px rgba(29, 31, 117, 0.1);
+      border-radius: 15px;
+      text-align: center;
+      .alert-close {
+        cursor: pointer;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #1d1f75;
+        transform: rotate(45deg);
+      }
+      .alert-title {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #1d1f75;
+      }
+      .alert-desc {
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 30px;
+        color: #363872;
+      }
+    }
+  }
+}
+
+
+[dir="rtl"] {
+  .foot {
+    .foot-con {
+      text-align: right;
+      .about {
+        .about-email {
+          margin-top: 35px;
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 31.5px;
+            height: 21px;
+            margin-right: 5px;
+          }
+          a {
+            color: #1d1f75;
+            text-decoration: none;
+          }
+        }
+      }
+      .emailTip {
+
+      }
+
+      .link {
+        width: 330px;
+        .link-item {
+          margin-top: 20px;
+
+          a {
+            color: #363872;
+            text-decoration: none;
+          }
+        }
+      }
+      .subscribe {
+        .send {
+          direction: ltr;
+          input {
+            padding-right: 30px;
+          }
+
+          span {
+            left: 3px;
+          }
+        }
+      }
+    }
+
+    .copyright {
+
+    }
+    .alert {
+      .alert-content {
+        .alert-close {
+          left: 15px;
+        }
+      }
+    }
+  }
+}

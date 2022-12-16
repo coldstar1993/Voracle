@@ -1,0 +1,51 @@
+@media only screen and (max-width: 1679px) {
+
+.strategic {
+    .strategic-con {
+      width: 100%;
+      padding: 27px;
+      box-sizing: border-box;
+      margin:0 auto;
+      padding-bottom: 56px;
+    }
+
+    .strategic-logo {
+
+      .logo {
+        margin-left: 20*0.55864198px;
+        flex: 1;
+        margin-top: 34*0.55864198px;
+        position: relative;
+        &:hover .hover {
+          display: inline-block;
+        }
+        span {
+          display: inline-block;
+          width: 90px;
+          height: 39px;
+          background-repeat: no-repeat;
+          background-size: contain;
+         
+          &.hover {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+          }
+        }
+      }
+    }
+
+    .title {
+        padding-top: 13px;
+        margin-bottom: 10px;
+    }
+
+    .desc {
+        margin-bottom: 30px;
+    }
+}
+}

@@ -1,0 +1,95 @@
+.technology {
+  background: #fff;
+  height: 791px;
+  width: 100%;
+  position: relative;
+  top: -262px;
+  .title {
+    margin-bottom: 28px;
+    font-size: 40px;
+  }
+  .desc {
+    font-size: 20px;
+  }
+  .technology-con {
+    width: 1680px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 162px 0 0;
+
+    .con {
+      .warp {
+        display: flex;
+
+        .item {
+          overflow: hidden;
+          flex: 1;
+          width: 319px;
+          height: 465px;
+          background: #ffffff;
+          border: 1px solid #d7d7d8;
+          box-shadow: 7px 21px 18px rgba(29, 31, 117, 0.15);
+          border-radius: 15px;
+          position: relative;
+          &:hover .back {
+            display: inline-block;
+            opacity: 0.85;
+          }
+          &:not(:first-child) {
+            margin-left: 12px;
+          }
+
+          .front {
+            background: #ffffff;
+            text-align: center;
+
+            img {
+              width: 169px;
+              height: 169px;
+              margin-top: 73px;
+            }
+
+            h2 {
+              margin-top: 42px;
+              font-size: 22px;
+              line-height: 36px;
+              margin-bottom: 61px;
+              color: #031d5b;
+            }
+          }
+
+          .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            text-align: center;
+            padding: 0 32px;
+            background: #1d1f75;
+            height: 100%;
+            color: #fff;
+            font-size: 20px;
+            //line-height: 34px;
+            display: none;
+            .info {
+              margin: 51px auto 30px;
+            }
+            p {
+              line-height: 1.4;
+            }
+          }
+
+          .info {
+            display: inline-block;
+            width: 83px;
+            height: 0px;
+            border: 3px solid #3eddcf;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
+}

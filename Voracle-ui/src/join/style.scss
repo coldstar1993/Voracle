@@ -1,0 +1,97 @@
+.join {
+  background: #1d1f74;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 63px;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .join-con {
+    z-index: 2;
+    position: relative;
+    height: 661px;
+    margin: 0 auto;
+    background: #fff url("../assets//join-bg.png") no-repeat;
+  }
+
+  .title {
+    color: #fff;
+    padding-top: 89px;
+  }
+
+  .desc {
+    margin-top: 16px;
+    color: #fff;
+    font-size: 25px;
+  }
+
+  .link-icon {
+    margin-bottom: 86px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    a {
+      width: 80px;
+      height: 79px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      &:hover {
+        border: 1px solid #1295f0;
+        background: #1295f0;
+      }
+      img {
+        width: 50px;
+      }
+    }
+
+    a:not(:first-child) {
+      margin-left: 31px;
+    }
+  }
+
+  .btn-con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn {
+      text-decoration: none;
+      cursor: pointer;
+      height: 73px;
+      border: 2px solid #ffffff;
+      box-shadow: 0px 3px 3px rgba(0, 6, 166, 0.12);
+      border-radius: 36px;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      &:hover {
+        border: 2px solid #1295f0;
+        background: #1295f0;
+      }
+
+      img {
+        padding-left: 20px;
+        width: 42px;
+        height: 42px;
+      }
+
+      span {
+        padding-left: 70px !important;
+        padding-right: 70px;
+        font-size: 20px;
+        line-height: 38px;
+        color: #ffffff;
+      }
+    }
+  }
+}

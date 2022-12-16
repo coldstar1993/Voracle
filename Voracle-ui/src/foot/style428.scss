@@ -1,0 +1,131 @@
+@media only screen and (max-width: 1279px) {
+  .foot {
+    .foot-con {
+      padding: 27px;
+      box-sizing: border-box;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: 0 auto 70 * 0.55864198px;
+      font-size: 15px;
+      text-align: center;
+      .foot-title {
+        font-size: 24px;
+        padding-top: 30 * 0.55864198px;
+        margin-bottom: 45 * 0.55864198px;
+      }
+
+      .about {
+        flex: 1;
+        width: 100%;
+        .about-desc {
+          width: 100%;
+          line-height: 33 * 0.55864198px;
+        }
+
+        .about-email {
+          justify-content: center;
+          margin-top: 35 * 0.55864198px;
+          margin-bottom: 25px;
+          img {
+            width: 31.5 * 0.55864198px;
+            height: 21 * 0.55864198px;
+            margin-right: 5 * 0.55864198px;
+          }
+          a {
+          }
+        }
+      }
+      .emailTip {
+        margin-top: 15 * 0.55864198px;
+        font-size: 20 * 0.55864198px;
+        line-height: 30 * 0.55864198px;
+      }
+      .link {
+        flex: 1;
+        width: 100%;
+
+        .link-item {
+          margin-top: 20 * 0.55864198px;
+        }
+      }
+
+      .resources {
+        width: 100%;
+        margin-top: 38px;
+      }
+
+      .subscribe {
+        flex: 1;
+        width: 100%;
+        margin-top: 20px;
+
+        .subscribe-desc {
+          width: 100%;
+          line-height: 33 * 0.55864198px;
+        }
+
+        .send {
+          width: 331px;
+          margin: 23px auto 0;
+          height: 73 * 0.55864198px;
+          box-shadow: 0 * 0.55864198px 3 * 0.55864198px 3 * 0.55864198px
+            rgba(0, 6, 166, 0.12);
+          border-radius: 36 * 0.55864198px;
+
+          input {
+            border-radius: 36 * 0.55864198px;
+            font-size: 17px;
+            height: 73 * 0.55864198px;
+            line-height: 73 * 0.55864198px;
+            padding-left: 30 * 0.55864198px;
+          }
+
+          span {
+            top: -2 * 0.55864198px;
+            right: -5 * 0.55864198px;
+            width: 140 * 0.55864198px;
+            height: 76 * 0.55864198px;
+            font-size: 18px;
+            line-height: 72 * 0.55864198px;
+            border-radius: 100 * 0.55864198px;
+          }
+        }
+      }
+    }
+
+    .copyright {
+      height: 60px;
+      line-height: 60px;
+      font-size: 15px;
+    }
+
+    .top {
+      bottom: 40 * 0.55864198px;
+    }
+    .alert {
+      .alert-content {
+        padding: 64 * 0.55864198px 122 * 0.55864198px;
+        width: 714 * 0.55864198px;
+        height: 162 * 0.55864198px;
+        box-shadow: 0px 10 * 0.55864198px 18 * 0.55864198px
+          rgba(29, 31, 117, 0.1);
+        border-radius: 15 * 0.55864198px;
+        .alert-close {
+          top: 5 * 0.55864198px;
+          right: 15 * 0.55864198px;
+          font-size: 30 * 0.55864198px;
+        }
+        .alert-title {
+          font-size: 40 * 0.55864198px;
+          margin-bottom: 40 * 0.55864198px;
+        }
+        .alert-desc {
+          font-size: 25 * 0.55864198px;
+          line-height: 30 * 0.55864198px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.strategic {
+  .strategic-con {
+    width: 1640px;
+    margin: 0 auto 137px;
+    background: #fff;
+  }
+
+  .strategic-logo {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .logo {
+      margin-left: 20px;
+      flex: 1;
+      margin-top: 34px;
+      position: relative;
+      &:hover .hover {
+        display: inline-block;
+      }
+      span {
+        display: inline-block;
+        width: 301px;
+        height: 103px;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &.hover {
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: none;
+          background-position: 2px 0px;
+        }
+      }
+    }
+  }
+
+  .title {
+    padding-top: 93px;
+    margin-bottom: 15px;
+  }
+
+  .desc {
+    margin-bottom: 83px;
+  }
+}
+
+
+[dir="rtl"] {
+  .strategic {
+    .strategic-logo {
+      direction: ltr;
+    }
+  }
+}

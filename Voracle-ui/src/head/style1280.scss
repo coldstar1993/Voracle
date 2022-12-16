@@ -1,0 +1,329 @@
+@media only screen and (min-width: 1280px) and (max-width: 1679px) {
+  #root.cn .parity {
+    width: 282 * 0.76190476px;
+  }
+  #root.cn .join .btn-con .btn span {
+    padding-left: 110 * 0.76190476px;
+  }
+  .head {
+    .video-img {
+      top: 15px;
+      right: -136px;
+      transform: scale(0.7);
+      .video-button {
+        width: 120* 0.76190476px;
+        height: 120* 0.76190476px;
+      }
+    }
+    .head-top {
+      margin-bottom: -196 * 0.76190476px;
+      .head-top-nav {
+        height: 139 * 0.76190476px;
+        .nav {
+          width: 1680 * 0.76190476px;
+          padding-top: 33 * 0.76190476px;
+
+          .nav-left {
+            img {
+              width: 309 * 0.76190476px;
+              height: 72 * 0.76190476px;
+            }
+          }
+
+          .nav-right {
+            .list {
+              .item {
+                font-size: 25 * 0.76190476px;
+                margin-left: 42 * 0.76190476px;
+                &.Apps {
+                  width: 132 * 0.76190476px;
+                  font-size: 25 * 0.76190476px;
+                  height: 53 * 0.76190476px;
+                  border-radius: 34 * 0.76190476px;
+                }
+                &:not(.Apps):hover,
+                &:not(.Apps).active {
+                  &::after {
+                    bottom: -10 * 0.76190476px;
+                  }
+                }
+              }
+              .nav-child-arrow {
+                height: 40 * 0.76190476px;
+                width: 20 * 0.76190476px;
+                margin-left: 5 * 0.76190476px;
+              }
+              .nav-child {
+                top: 45 * 0.76190476px;
+                padding: 25 * 0.76190476px;
+                box-shadow: 0px 10 * 0.76190476px 10 * 0.76190476px
+                  rgba(0, 0, 0, 0.16);
+
+                .nav-child-item {
+                  height: 33 * 0.76190476px;
+                  line-height: 33 * 0.76190476px;
+                  font-size: 25 * 0.76190476px;
+                  &.aresProtocol {
+                    width: 166 * 0.76190476px;
+                  }
+                  &:not(:first-child) {
+                    margin-top: 24 * 0.76190476px;
+                  }
+                }
+              }
+            }
+
+            .language {
+              margin-left: 60 * 0.76190476px;
+
+              .language-name {
+                font-size: 25 * 0.76190476px;
+                .one {
+                  &.isShowLanguage {
+                    //top: 13 * 0.76190476px;
+                  }
+                }
+                .two {
+                  //top: 20 * 0.76190476px;
+                }
+              }
+
+              .language-arrow {
+                height: 40 * 0.76190476px;
+                width: 20 * 0.76190476px;
+                margin-left: 5 * 0.76190476px;
+                display: inline-block;
+                background: url("../assets/left.png") no-repeat;
+
+                &.top {
+                  transition: all 0.5s;
+                  transform: rotate(90deg) scale(0.5);
+                }
+
+                &.bottom {
+                  transition: all 0.5s;
+                  transform: rotate(270deg) scale(0.5);
+                }
+              }
+
+              .language-select {
+                position: absolute;
+                top: 35 * 0.76190476px;
+                right: 0;
+                width: 100 * 0.76190476px;
+                padding: 10 * 0.76190476px;
+                outline: none;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .head-top-address {
+      .address {
+        width: 1680 * 0.76190476px;
+        line-height: 57 * 0.76190476px;
+        font-size: 22 * 0.76190476px;
+
+        .close {
+          right: 16 * 0.76190476px;
+
+          &::after {
+            width: 16 * 0.76190476px;
+            top: 2 * 0.76190476px;
+            font-size: 33 * 0.76190476px;
+            height: 16 * 0.76190476px;
+          }
+        }
+      }
+    }
+
+    .head-con {
+      .head-content {
+        width: 1280px;
+        height: 1260 * 0.76190476px;
+        background-size: 1280px;
+
+        &::before {
+        }
+
+        .head-warp {
+          width: 1280 * 0.76190476px;
+
+          .content-desc {
+            padding-bottom: 36 * 0.76190476px;
+            padding-top: 338 * 0.76190476px;
+            min-width: 922 * 0.76190476px;
+            height: 144 * 0.76190476px;
+            font-size: 54 * 0.76190476px;
+            line-height: 72 * 0.76190476px;
+            text-shadow: 0px 3 * 0.76190476px 6 * 0.76190476px
+              rgba(0, 22, 221, 0.23);
+          }
+
+          .content-btn {
+            margin-bottom: 132 * 0.76190476px;
+
+            .farmBtnText {
+              margin-right: 18 * 0.76190476px;
+            }
+
+            a {
+              min-width: 190 * 0.76190476px;
+              line-height: 64 * 0.76190476px;
+              box-shadow: 0px 3 * 0.76190476px 3 * 0.76190476px
+                rgba(0, 6, 166, 0.12);
+              border-radius: 32 * 0.76190476px;
+              font-size: 26 * 0.76190476px;
+            }
+          }
+
+          .substrat {
+            .substratLogo {
+              width: 259 * 0.76190476px;
+              height: 117 * 0.76190476px;
+            }
+
+            .parity {
+              width: 228 * 0.76190476px;
+              height: 56 * 0.76190476px;
+              font-size: 24 * 0.76190476px;
+              line-height: 24 * 0.76190476px;
+              margin-right: 10 * 0.76190476px;
+            }
+
+            .substrateBtnText {
+              width: 165 * 0.76190476px;
+              line-height: 56 * 0.76190476px;
+              box-shadow: 0px 3 * 0.76190476px 3 * 0.76190476px
+                rgba(0, 27, 162, 0.12);
+              border-radius: 28 * 0.76190476px;
+              font-size: 27 * 0.76190476px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .usd {
+    &.topClose {
+      top: 927 * 0.76190476px;
+    }
+
+    width: 1640 * 0.76190476px;
+    height: 196 * 0.76190476px;
+    top: 720px;
+    margin-left: -820 * 0.76190476px;
+    box-shadow: 7 * 0.76190476px 18 * 0.76190476px 37 * 0.76190476px
+      rgba(29, 31, 117, 0.25);
+    border-radius: 20 * 0.76190476px;
+
+    .usd-con {
+      // padding-left: 50 * 0.76190476px;
+      // padding-top: 54 * 0.76190476px;
+
+      .usd-logo {
+        img {
+          width: 88.76 * 0.76190476px;
+          height: 88.76 * 0.76190476px;
+        }
+      }
+
+      .usd-usd {
+        // margin-left: 38 * 0.76190476px;
+
+        .usd-name {
+          font-size: 20 * 0.76190476px;
+        }
+
+        .usd-price {
+          font-size: 50 * 0.76190476px;
+        }
+
+        .usd-currency {
+          // margin-left: 10 * 0.76190476px;
+          font-size: 30 * 0.76190476px;
+        }
+      }
+
+      .verticalBar {
+        // &:after {
+        //   left: -50 * 0.76190476px;
+        //   height: 61 * 0.76190476px;
+        // }
+      }
+
+      .usd-point {
+        // margin-left: 100 * 0.76190476px;
+        font-size: 40 * 0.76190476px;
+        line-height: 53 * 0.76190476px;
+
+        .usd-direction {
+          margin-left: 8 * 0.76190476px;
+          border-left: 8.7 * 0.76190476px solid transparent;
+          border-right: 8.7 * 0.76190476px solid transparent;
+          border-bottom: 8.7 * 0.76190476px solid #55aa55;
+        }
+      }
+
+      .usd-rank {
+        // margin-left: 108 * 0.76190476px;
+      }
+
+      .usd-text {
+        font-size: 20 * 0.76190476px;
+        margin-bottom: 6px;
+      }
+
+      .usd-value {
+        font-size: 35 * 0.76190476px;
+      }
+
+      .usd-marketCap {
+        // margin-left: 108 * 0.76190476px;
+      }
+
+      .usd-volume {
+        // margin-left: 108 * 0.76190476px;
+      }
+    }
+  }
+
+  .fr {
+    .nav-child {
+      .nav-child-item {
+        &.aresProtocol {
+          min-width: 166px;
+        }
+      }
+    }
+  }
+  .ru, .ua {
+    .nav-right {
+      .list {
+        li:nth-child(2) {
+          .item {
+            .nav-child{
+              min-width: 265px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tk {
+    .nav-right {
+      .list {
+        li:nth-child(3) {
+          .item {
+            .nav-child{
+              min-width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

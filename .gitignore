@@ -1,6 +1,9 @@
 # NodeJS
-node_modules
-build
+
+Voracle-contract/node_modules
+Voracle-fetcher/node_modules
+Voracle-ui/node_modules
+**/*/build
 coverage
 
 # Editor
@@ -14,3 +17,5 @@ keys
 *.lock
 package-lock.json
 keys
+
+1.git

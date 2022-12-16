@@ -1,0 +1,310 @@
+@media only screen and (max-width: 1279px) {
+  .cn .head .head-con .head-content .head-warp .substrat .substratLogo {
+    right: -30px;
+  }
+  .head .head-top-address .address a {
+    font-size: 16px;
+  }
+  .head .head-con .head-content-line {
+    top: -290px;
+  }
+  .head .video-img.isNoAddress {
+    top: 533px;
+  }
+
+  .head .video-img .video-button {
+    top: 250px;
+  }
+  .head .head-con .head-content .head-warp .substrat {
+    flex-wrap: wrap;
+  }
+  #root.cn .parity {
+    width: 282 * 0.55864198px;
+  }
+  #root.cn .join .btn-con .btn span {
+    padding-left: 110 * 0.55864198px;
+  }
+
+  .head {
+    .video-img {
+      width: 80%;
+      height: 1071 * 0.55864198px;
+      top: 590px;
+      left: 50%;
+      transform: translateX(-50%) scale(1.18);
+
+      iframe {
+        height: 55%;
+      }
+
+      &.fixed {
+        top: 543px;
+      }
+    }
+    .head-top {
+      margin-bottom: -210 * 0.55864198px;
+      .head-top-nav {
+        height: 139 * 0.55864198px;
+        .nav {
+          width: 100%;
+          padding-top: 33 * 0.55864198px;
+
+          .nav-left {
+            img {
+              width: 309 * 0.55864198px;
+              height: 72 * 0.55864198px;
+            }
+          }
+
+          .nav-right {
+            .list {
+              .item {
+                font-size: 18px;
+                margin-left: 20px;
+
+                &:hover,
+                &.active {
+                  &::after {
+                    bottom: -10 * 0.55864198px;
+                  }
+                }
+              }
+            }
+
+            .language {
+              margin-left: 20px;
+
+              .language-name {
+                font-size: 25 * 0.55864198px;
+                .one {
+                  &.isShowLanguage {
+                    top: 13 * 0.55864198px;
+                  }
+                }
+                .two {
+                  top: 20 * 0.55864198px;
+                }
+              }
+
+              .language-arrow {
+                height: 40 * 0.55864198px;
+                width: 20 * 0.55864198px;
+                margin-left: 5 * 0.55864198px;
+              }
+
+              .language-select {
+                top: 35 * 0.55864198px;
+                width: 100 * 0.55864198px;
+                padding: 10 * 0.55864198px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .head-top-address {
+      .address {
+        width: 100%;
+        margin: 0 auto;
+        line-height: 1.2;
+        padding: 0.5em 0;
+        font-size: 1em;
+
+        .close {
+          right: -10px;
+
+          &::after {
+            width: 16 * 0.55864198px;
+            top: 5.1px;
+            font-size: 33 * 0.55864198px;
+            height: 16 * 0.55864198px;
+          }
+        }
+      }
+    }
+
+    .head-con {
+      .head-content {
+        width: 100%;
+        height: 1000px;
+        background-size: 1280px;
+
+        &::before {
+          width: 2px;
+        }
+
+        .head-warp {
+          width: 100%;
+
+          .content-desc {
+            padding-bottom: 52px;
+            padding-top: 338 * 0.55864198px;
+            width: 100%;
+            height: 110px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 72 * 0.55864198px;
+            text-shadow: 0px 3 * 0.55864198px 6 * 0.55864198px rgba(0, 22, 221, 0.23);
+          }
+
+          .content-btn {
+            margin-bottom: 48px;
+            text-align: center;
+            .farmBtnText {
+              margin-right: 18 * 0.55864198px;
+            }
+
+            a {
+              width: 148px;
+              line-height: 44px;
+              box-shadow: 0px 3 * 0.55864198px 3 * 0.55864198px rgba(0, 6, 166, 0.12);
+              border-radius: 32 * 0.55864198px;
+              font-size: 18px;
+            }
+          }
+
+          .substrat {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            .substratLogo-con {
+              width: none;
+            }
+
+            .substratLogo {
+              position: relative;
+              right: none;
+              width: 129px;
+              height: 58px;
+              display: block;
+            }
+
+            .parity {
+              width: 70%;
+              height: none;
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 24px;
+              margin-right: none;
+              text-align: center;
+              text-indent: 0;
+              margin-right: 0;
+              margin-top: 1em;
+            }
+
+            .substrateBtnText {
+              width: 158px;
+              line-height: 43px;
+              box-shadow: 0px 3 * 0.55864198px 3 * 0.55864198px rgba(0, 27, 162, 0.12);
+              border-radius: 43px;
+              font-size: 18px;
+              font-weight: bold;
+              position: relative;
+              bottom: -15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .usd {
+    width: calc(100% - 2em);
+    height: auto;
+    // top: 975px;
+    position: relative;
+    top: -4em;
+    margin-left: calc(-100vw / 2 + 1em);
+    flex-direction: column;
+    padding: 1em 0;
+
+    .usd-con {
+      flex-wrap: wrap;
+      padding: 1em 0;
+      justify-content: center;
+      width: calc(100% - 0em);
+
+      .usd-logo {
+        img {
+          width: 88.76 * 0.55864198px;
+          height: 88.76 * 0.55864198px;
+        }
+      }
+
+      .usd-usd {
+        margin-left: 1em;
+
+        .usd-name {
+          font-size: 20 * 0.55864198px;
+          line-height: 1.2;
+        }
+
+        .usd-price {
+          font-size: 27px;
+        }
+
+        .usd-currency {
+          margin-left: 10 * 0.55864198px;
+          font-size: 30 * 0.55864198px;
+        }
+      }
+
+      .verticalBar {
+        &:after {
+          left: -1em;
+          height: 61 * 0.55864198px;
+        }
+      }
+
+      .usd-point {
+        margin-left: 2em;
+        font-size: 23px;
+        line-height: 53 * 0.55864198px;
+
+        .usd-direction {
+          margin-left: 8 * 0.55864198px;
+          border-left: 8.7 * 0.55864198px solid transparent;
+          border-right: 8.7 * 0.55864198px solid transparent;
+          border-bottom: 8.7 * 0.55864198px solid #55aa55;
+        }
+      }
+
+      .placeholder {
+        width: 100%;
+        height: 1em;
+      }
+
+      .usd-rank {
+        align-items: flex-start;
+        margin-left: 3em;
+        margin-top: 0em;
+      }
+
+      .usd-text {
+        font-size: 1em;
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+
+      .usd-value {
+        font-size: 1.2em;
+      }
+
+      .usd-marketCap {
+        margin-top: 0em;
+        align-items: flex-start;
+        margin-left: 3em;
+      }
+
+      .usd-volume {
+        margin-top: 0em;
+        align-items: flex-start;
+        margin-left: 3em;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@media only screen and  (min-width: 1280px) and (max-width: 1679px) {
+
+.strategic {
+    .strategic-con {
+        width: 1640*0.76190476px;
+        margin: 0 auto 137*0.76190476px;
+    }
+
+    .strategic-logo {
+
+      .logo {
+        margin-left: 20*0.76190476px;
+        flex: 1;
+        margin-top: 34*0.76190476px;
+        position: relative;
+        &:hover .hover {
+          display: inline-block;
+        }
+        span {
+          display: inline-block;
+          width: 301*0.76190476px;
+          height: 103*0.76190476px;
+          background-repeat: no-repeat;
+          background-size: contain;
+         
+          &.hover {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+          }
+        }
+      }
+    }
+
+    .title {
+        padding-top: 93*0.76190476px;
+        margin-bottom: 15*0.76190476px;
+    }
+
+    .desc {
+        margin-bottom: 83*0.76190476px;
+    }
+}
+}
