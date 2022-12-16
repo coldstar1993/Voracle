@@ -19,9 +19,9 @@ export class Voracle extends SmartContract {
       editState: Permissions.signature(),// must be 'signature' & cannot be 'proof'.
     });
 
-    let fetcher0 = Poseidon.hash(PublicKey.fromBase58("B62qr5gawtLkgKHQNstAbtpyCpbF7eUjs8A1SSZ4d8yN1ge68c8aSds").toFields());
-    let fetcher1 = Poseidon.hash(PublicKey.fromBase58("B62qmaGeCZrbSMDjAqBujy1ARCbVAAhDAPpjoKwcAtTn7zkBFMdBmBZ").toFields());
-    let fetcher2 = Poseidon.hash(PublicKey.fromBase58("B62qnFsdNiXL1BGNXWWN6GADSnZA3yiq55tq2UyVjXnzeYdFeYPVdq5").toFields());
+    let fetcher0 = Poseidon.hash(PublicKey.fromBase58("B62qikWxvd7g3smTA6vDEPqeXDnP6LnxU46gKFmB9rdC8ohdnPu1AoL").toFields());
+    let fetcher1 = Poseidon.hash(PublicKey.fromBase58("B62qk522nBpiyG8sowkEbao2csaGm6PBtTUwSSLxkg6QTRfVDjG5xdg").toFields());
+    let fetcher2 = Poseidon.hash(PublicKey.fromBase58("B62qooLE6R54n9vBkqf5N2w4kzB3ZSvGRXcXATXnX86kpiFp7jCDd7r").toFields());
 
     this.fetcherPKList.set(FetcherPKList.fromFields([fetcher0, fetcher1, fetcher2]));
   }
