@@ -126,7 +126,15 @@ So to run the whole *baby* Voracle,  steps are as belows:
     * `npm run dev`
 
 Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start locally at different ports!
+
 `During runtime, **Voracle Aggregator** will forwards zkapp's data requests to 3 **Voracle Fetcher**.`
+
+You could see all the endpoints supported at Swagger UI:
+  * **Voracle Aggregator**:   http://localhost:8080/docs
+  * **Voracle Fetcher - 0**:  http://localhost:3000/docs
+  * **Voracle Fetcher - 1**:  http://localhost:3001/docs
+  * **Voracle Fetcher - 2**:  http://localhost:3002/docs
+
 
 And then, step into **Voracle-ui** depending on **Voracle-tool** insides and consisting of serveral zkapps for use cases, run `yarn`&`yarn start`, it will start at port 80.
 
