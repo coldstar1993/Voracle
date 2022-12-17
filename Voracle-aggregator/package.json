@@ -13,9 +13,7 @@
 
     "dev:schema": "nodemon --watch ./src/swagger.type.ts --experimental-specifier-resolution=node ./gen_schema.cjs",
     "dev:watch": "tsc -w -p tsconfig.json",
-    "dev:start-fetcher0": "cross-env NODE_ENV=development SERVER_PORT=3000 FETCHER_PUB_KEY_IDX=0 FETCHER_PRIV_KEY=EKF9DU363vSSFnp2reh3EeeQYPJBbVWhtU11WxtKpMpf55jPZ3hN nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
-    "dev:start-fetcher1": "cross-env NODE_ENV=development SERVER_PORT=3001 FETCHER_PUB_KEY_IDX=1 FETCHER_PRIV_KEY=EKEyRQWVRPKLcafRzNMvbfUTDSRowXii8xUTCkc9839X1MUqNA81 nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
-    "dev:start-fetcher2": "cross-env NODE_ENV=development SERVER_PORT=3002 FETCHER_PUB_KEY_IDX=2 FETCHER_PRIV_KEY=EKFTVCvBQKqBd5vGwpqCGyPUEBq6gnrLPYeGDLHAtRdRB8fm2LFL nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
+    "dev:start": "cross-env NODE_ENV=development SERVER_PORT=8080 nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
 
     "dev": "cross-env NODE_ENV=development concurrently npm:dev:*",
 

@@ -5,7 +5,7 @@ import { MinaApiService } from "./mina_service";
 import { Encoding, Poseidon, PrivateKey } from 'snarkyjs';
 
 import { ApiResp } from '../common/api_resp';
-import { BlockSummaryResponse, BlockSupplyStatusResponse, CommonResponse } from './models/response';
+import { BlockSummaryResponse, NetworkSupplyStatusResponse, CommonResponse } from './models/response';
 
 @OpenAPI({
   security: [{ basicAuth: [] }],
@@ -41,12 +41,12 @@ export class MinaController {
   //curl --request GET \
   // --url 'https://api.minaexplorer.com/accounts/B62qpRzFVjd56FiHnNfxokVbcHMQLT119My1FEdSq8ss7KomLiSZcan'
   @OpenAPI({
-    summary: 'Get block supply',
+    summary: 'Get network supply',
     description:''
   })
-  @Get('/block/supply')
-  @ResponseSchema('BlockSupplyStatusResponse')
-  public async obtainBlockSupply(): Promise<ApiResp<BlockSupplyStatusResponse>> {
+  @Get('/network/supply')
+  @ResponseSchema('NetworkSupplyStatusResponse')
+  public async obtainNetworkSupply(): Promise<ApiResp<NetworkSupplyStatusResponse>> {
     const blockSummary = await this.minaApiService.obtainBlockSummary();
     const lockedSupply = (blockSummary?.lockedSupply)??'0';
     const circulatingSupply = (blockSummary?.circulatingSupply)??'0';
@@ -63,7 +63,7 @@ export class MinaController {
     // sign
     // TODO
     const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: { blockchainLength, circulatingSupply, lockedSupply }, fetchSig } as BlockSupplyStatusResponse);
+    return ApiResp.Ok({ fetcherPk, pkIdx, data: { blockchainLength, circulatingSupply, lockedSupply }, fetchSig } as NetworkSupplyStatusResponse);
   }
 
   @OpenAPI({
@@ -74,7 +74,7 @@ export class MinaController {
   @ResponseSchema('BlockSupplyStatusResponse')
   public async obtainBlockLatestN(
     @Param('num') num: number
-  ): Promise<ApiResp<BlockSupplyStatusResponse>> {
+  ): Promise<ApiResp<NetworkSupplyStatusResponse>> {
     const latestBlockN = await this.minaApiService.obtainLatestBlocks(num);
 
     // get key
@@ -88,7 +88,7 @@ export class MinaController {
     // sign
     // TODO
     const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: latestBlockN, fetchSig } as BlockSupplyStatusResponse);
+    return ApiResp.Ok({ fetcherPk, pkIdx, data: latestBlockN, fetchSig } as NetworkSupplyStatusResponse);
   }
 
   @OpenAPI({

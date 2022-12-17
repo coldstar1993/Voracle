@@ -64,9 +64,6 @@ Next Stage, Voracle will grow with further Services as below:
 * Automatically Trigger zkApp 
 * ...
 
-
-
-
 ## Overview of Techical Architect
 
 Initial Stage, Voracle Network is still a little baby, Providing common services with a Simplified Technical Architect.

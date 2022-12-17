@@ -5,7 +5,7 @@ import { MinaApiService } from "./mina_service";
 import { Encoding, Poseidon, PrivateKey } from 'snarkyjs';
 
 import { ApiResp } from '../common/api_resp';
-import { BlockSummaryResponse, BlockSupplyStatusResponse, CommonResponse } from './models/response';
+import { BlockSummaryResponse, BlockSummaryResponseList, NetworkSupplyStatusResponse, CommonResponse, NetworkSupplyStatusResponseList, CommonResponseList } from './models/response';
 
 @OpenAPI({
   security: [{ basicAuth: [] }],
@@ -20,50 +20,23 @@ export class MinaController {
     summary: 'Get block summary',
   })
   @Get('/block/summary')
-  @ResponseSchema('BlockSummaryResponse')
-  public async obtainBlockSummary(): Promise<ApiResp<BlockSummaryResponse>> {
-    const blockSummary = await this.minaApiService.obtainBlockSummary();
-
-    // get key
-    const _privKey = process.env.FETCHER_PRIV_KEY as string;
-    const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;
-    const fetchPrivKey = PrivateKey.fromBase58(_privKey);
-    const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
-    // hash
-    let preimage = { blockSummary };
-    let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
-    // sign
-    // TODO
-    const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: blockSummary, fetchSig } as BlockSummaryResponse);
+  @ResponseSchema('BlockSummaryResponseList')
+  public async obtainBlockSummary(): Promise<ApiResp<BlockSummaryResponseList>> {
+    const blockSummaryResponseList = await this.minaApiService.obtainBlockSummary();
+    return ApiResp.Ok(blockSummaryResponseList);
   }
 
   //curl --request GET \
   // --url 'https://api.minaexplorer.com/accounts/B62qpRzFVjd56FiHnNfxokVbcHMQLT119My1FEdSq8ss7KomLiSZcan'
   @OpenAPI({
-    summary: 'Get block supply',
+    summary: 'Get network supply',
     description:''
   })
-  @Get('/block/supply')
-  @ResponseSchema('BlockSupplyStatusResponse')
-  public async obtainBlockSupply(): Promise<ApiResp<BlockSupplyStatusResponse>> {
-    const blockSummary = await this.minaApiService.obtainBlockSummary();
-    const lockedSupply = (blockSummary?.lockedSupply)??'0';
-    const circulatingSupply = (blockSummary?.circulatingSupply)??'0';
-    const blockchainLength = (blockSummary?.blockchainLength)??0;
-
-    // get key
-    const _privKey = process.env.FETCHER_PRIV_KEY as string;
-    const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;
-    const fetchPrivKey = PrivateKey.fromBase58(_privKey);
-    const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
-    // hash
-    let preimage = { blockchainLength, circulatingSupply, lockedSupply };
-    let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
-    // sign
-    // TODO
-    const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: { blockchainLength, circulatingSupply, lockedSupply }, fetchSig } as BlockSupplyStatusResponse);
+  @Get('/network/supply')
+  @ResponseSchema('NetworkSupplyStatusResponseList')
+  public async obtainNetworkSupply(): Promise<ApiResp<NetworkSupplyStatusResponseList>> {
+    const networkSupplyStatusResponseList = await this.minaApiService.obtainNetworkSupply();
+    return ApiResp.Ok(networkSupplyStatusResponseList);
   }
 
   @OpenAPI({
@@ -71,46 +44,23 @@ export class MinaController {
     description:'maximum: 10, minimum: 1'
   })
   @Get('/block/latest/:num')
-  @ResponseSchema('BlockSupplyStatusResponse')
+  @ResponseSchema('CommonResponseList')
   public async obtainBlockLatestN(
     @Param('num') num: number
-  ): Promise<ApiResp<BlockSupplyStatusResponse>> {
-    const latestBlockN = await this.minaApiService.obtainLatestBlocks(num);
-
-    // get key
-    const _privKey = process.env.FETCHER_PRIV_KEY as string;
-    const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;
-    const fetchPrivKey = PrivateKey.fromBase58(_privKey);
-    const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
-    // hash
-    let preimage = latestBlockN;
-    let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
-    // sign
-    // TODO
-    const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: latestBlockN, fetchSig } as BlockSupplyStatusResponse);
+  ): Promise<ApiResp<CommonResponseList>> {
+    const commonResponseList = await this.minaApiService.obtainLatestBlocks(num);
+    return ApiResp.Ok(commonResponseList);
   }
 
   @OpenAPI({
     summary: 'Get block by blockHash',
   })
   @Get('/block/hash/:blockhash')
-  @ResponseSchema('CommonResponse')
+  @ResponseSchema('CommonResponseList')
   public async obtainBlockByHash(
     @Param('blockhash') blockhash: string
-  ): Promise<ApiResp<CommonResponse>> {
-    const targetBlock = await this.minaApiService.obtainBlockByHash(blockhash);
-    // get key
-    const _privKey = process.env.FETCHER_PRIV_KEY as string;
-    const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;
-    const fetchPrivKey = PrivateKey.fromBase58(_privKey);
-    const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
-    // hash
-    let preimage = targetBlock;
-    let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
-    // sign
-    // TODO
-    const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, data: targetBlock} as CommonResponse);
+  ): Promise<ApiResp<CommonResponseList>> {
+    const commonResponseList = await this.minaApiService.obtainBlockByHash(blockhash);
+    return ApiResp.Ok(commonResponseList);
   }
 }

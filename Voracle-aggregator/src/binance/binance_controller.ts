@@ -3,7 +3,7 @@ import { Service } from 'typedi';
 import { OpenAPI, ResponseSchema } from 'routing-controllers-openapi';
 import { BinanceApiService } from "./binance_service";
 import { Encoding, Poseidon, PrivateKey } from 'snarkyjs';
-import { AccountResonse } from './models/response';
+import { AccountResonse, AccountResonseList } from './models/response';
 import { ApiResp } from '../common/api_resp';
 
 @OpenAPI({
@@ -24,22 +24,8 @@ export class BinanceController {
     @Param("asset") asset: string,
     @QueryParam("apiKey") apiKey: string,
     @QueryParam("queryParamSegment") queryParamSegment: string
-  ): Promise<ApiResp<AccountResonse>> {
-    const account = await this.binanceService.obtainAccount(apiKey, queryParamSegment);
-    let targetBalance = account?.balances?.filter((b) => b.asset == asset.toUpperCase())?.at(0);
-    let free = (targetBalance?.free) ?? '0';
-    let locked = (targetBalance?.locked) ?? '0';
-    // get key
-    const _privKey = process.env.FETCHER_PRIV_KEY as string;
-    const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;
-    const fetchPrivKey = PrivateKey.fromBase58(_privKey);
-    const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
-    // hash
-    let preimage = { apiKey, queryParamSegment, asset, free, locked };
-    let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
-    // sign
-    // TODO
-    const fetchSig = ['', ''];
-    return ApiResp.Ok({ fetcherPk, pkIdx, asset, free, locked, fetchSig } as AccountResonse);
+  ): Promise<ApiResp<AccountResonseList>> {
+    const accountResonseList = await this.binanceService.obtainAccount(asset, apiKey, queryParamSegment);
+    return ApiResp.Ok(accountResonseList);
   }
 }

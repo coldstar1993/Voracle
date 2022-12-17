@@ -33,7 +33,7 @@ export interface BlockSummaryResponse {
   fetchSig: [string, string],
 }
 
-export interface BlockSupplyStatusResponse {
+export interface NetworkSupplyStatusResponse {
   fetcherPk: string,
   pkIdx: string,
   data: { blockchainLength: string, circulatingSupply: string, lockedSupply: string },
