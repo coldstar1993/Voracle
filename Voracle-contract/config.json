@@ -1,10 +1,17 @@
 {
   "version": 1,
   "networks": {
-    "berkeley": {
+    "berkeley-voracle": {
       "url": "https://proxy.berkeley.minaexplorer.com/graphql",
+      "keyPath": "keys/berkeley-Voracle.json",
+      "fee": "0.1",
+      "smartContract": "Voracle"
+    },
+    "berkeley": {
+      "url":"https://proxy.berkeley.minaexplorer.com/graphql",
       "keyPath": "keys/berkeley.json",
-      "fee": "0.1"
+      "fee": "0.1",
+      "smartContract": "VoracleVerifier"
     }
   }
 }
