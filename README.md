@@ -83,7 +83,7 @@ To integrate with Voracle, You first had better go to the repo belows:
 * Voracle Contracts:  https://github.com/coldstar1993/Voracle/tree/main/Voracle-contract
 * Voracle Aggregator:  https://github.com/coldstar1993/Voracle/tree/main/Voracle-aggregator
 * Voracle Fetcher: https://github.com/coldstar1993/Voracle/tree/main/Voracle-fetcher
-* Voracle Tool&Libs: https://github.com/coldstar1993/Voracle/tree/main/Voralce-tool
+* Voracle Tool&Libs: https://github.com/coldstar1993/Voracle/tree/main/Voracle-tool
 * Voracle ui: https://github.com/coldstar1993/Voracle/tree/main/Voracle-ui 
 
 All You project need to do is to integrate **Voracle Tool&Libs** which provide capabilities of looking for Oracle service from Voracle, such as invoking request to **Voracle Aggregator**, as well as Voracle Contract Verifying data responded from each **Voracle Fetcher Nodes** and so on.
@@ -95,6 +95,8 @@ To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet 
 
 
 ## How to run Voracle Locally
+At the very beginning, use node:v16.13.0, which is the best.
+
 Currently, There are fixed amount(=3) of **Voracle Fetcher**  registered into the **Voracle Contract**, which you could directly find inside the  contract file *Voracle.ts*. Therefore, During Mina Activity, You could easily boot the whole Voracle Service Locally.
 
 The below are the key pairs respectively for each **Voracle Fetcher**
@@ -123,15 +125,16 @@ So to run the whole *baby* Voracle,  steps are as belows:
   * step into **Voracle Fetcher** && **Voracle Aggregator**,run as below:
     * `npm run dev`
 
-Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start!
+Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start locally at different ports!
+`During runtime, **Voracle Aggregator** will forwards zkapp's data requests to 3 **Voracle Fetcher**.`
 
-During runtime, **Voracle Aggregator** will forwards zkapp requests to 3 **Voracle Fetcher**.
+And then, step into **Voracle-ui** consists of serveral zkapps for use cases, run `npm run start`, it will start at port 80.
 
-And then, step into **Voracle-ui** consists of serveral zkapps for use cases, run `npm run start`, it will start now.
+Here, The whole `baby` Voracle is working!!
 
 ## The RoadMap of Voracle
-// TODO //TODO //TODO
-* support graphQL endpoint
+* support graphQL endpoint for richer api service
+* dynamically register & demise fetcher nodes.
 * tokens for staking & fee
 * become an Oracle NETWORK
 
