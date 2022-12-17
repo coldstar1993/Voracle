@@ -8,7 +8,7 @@ import {
 } from 'snarkyjs';
 import { Voracle } from './Voracle.js';
 
-let proofsEnabled = false;
+let proofsEnabled = true;
 
 let deployerAccount: PrivateKey,
     zkAppAddress: PublicKey,
