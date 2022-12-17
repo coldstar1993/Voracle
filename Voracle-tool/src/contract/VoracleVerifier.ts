@@ -15,31 +15,27 @@ export class VoracleVerifier extends SmartContract {
 
   /**
    * old key cannot equal to new key.
-   * @param voracleAddr 
+   * @param voracleAddr0 
    */
-  @method changeVoracleAddr(voracleAddr: PublicKey){
+  @method changeVoracleAddr(voracleAddr0: PublicKey) {
     const vaddr = this.voracleAddr.get();
-    vaddr.assertEquals( this.voracleAddr.get());
-    
-    Circuit.if(vaddr.equals(voracleAddr), (()=>{Field(0).assertEquals(Field(1))})(), (()=>{
-      this.voracleAddr.set(voracleAddr);
-    })());
+    this.voracleAddr.assertEquals(vaddr);
+
+    this.voracleAddr.set(voracleAddr0);
   }
 
-  @method verifySig(data: CircuitString, sig: Signature, fetcherPk: PublicKey, pkIdx: UInt32) {
+  @method verifySig(data: CircuitString, sig: Signature, fetcherPk: PublicKey) {
     const vaddr = this.voracleAddr.get();
-    vaddr.assertEquals( this.voracleAddr.get());
+    this.voracleAddr.assertEquals(vaddr);
     
     const vocl = new Voracle(this.voracleAddr.get());
     const fetcherPKList = vocl.fetcherPKList.get();
-    fetcherPKList.forEach((p, idx) => {
-      vocl.fetcherPKList.get()[idx].assertEquals(p);
-    });
+    vocl.fetcherPKList.assertEquals(fetcherPKList);
 
-    const fpkTmp = Poseidon.hash(fetcherPk.toFields());
-    fetcherPKList[Number.parseInt(pkIdx.toString())].assertEquals(fpkTmp);
+    const fpkHash = Poseidon.hash(fetcherPk.toFields());
+    // provided fetcherPkOld must equal to the one at its own position
+    fetcherPKList.arr.map(v=>v.equals(fpkHash)).reduce(Bool.or).assertTrue();
 
     sig.verify(fetcherPk, [Poseidon.hash(data.toFields())]).assertTrue();
-
   }
 }

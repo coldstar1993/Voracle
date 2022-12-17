@@ -5,9 +5,9 @@ import { Field, SmartContract, state, State, method, Struct, DeployArgs, Permiss
  * This design is not good to fix the number of '*fetchers*'. 
  * so will use **MerkleMap** & **MerkleMapWitness** to replace this design
  */
-export class FetcherPKList extends Struct([
+export class FetcherPKList extends Struct({arr:[
   Field, Field, Field
-]) { }
+]}) { }
 
 export class Voracle extends SmartContract {
   @state(FetcherPKList) fetcherPKList = State<FetcherPKList>();
@@ -23,8 +23,10 @@ export class Voracle extends SmartContract {
     let fetcher1 = Poseidon.hash(PublicKey.fromBase58("B62qk522nBpiyG8sowkEbao2csaGm6PBtTUwSSLxkg6QTRfVDjG5xdg").toFields());
     let fetcher2 = Poseidon.hash(PublicKey.fromBase58("B62qooLE6R54n9vBkqf5N2w4kzB3ZSvGRXcXATXnX86kpiFp7jCDd7r").toFields());
 
-    this.fetcherPKList.set(FetcherPKList.fromFields([fetcher0, fetcher1, fetcher2]));
+    this.fetcherPKList.set(new FetcherPKList({arr:[fetcher0, fetcher1, fetcher2]}));
   }
+
+
 
   /**
    * zkapp owner will help maintain the fetchers with signature by zkappPrivateKey.
@@ -33,24 +35,27 @@ export class Voracle extends SmartContract {
    * @param fetcherPkNew 
    * @param pkIdx 
    */
-  @method updateFetcher(fetcherPkOld: PublicKey, fetcherPkNew: PublicKey, pkIdx: UInt32) {
-    const indx0 = Number.parseInt(pkIdx.toString());
+  @method updateFetcher(fetcherPkOld: PublicKey, fetcherPkNew: PublicKey) {
     const fpkOldTmp = Poseidon.hash(fetcherPkOld.toFields());
     const fpkNewTmp = Poseidon.hash(fetcherPkNew.toFields());
 
     const fetcherPKList = this.fetcherPKList.get();
-    fetcherPKList.forEach((p, idx) => {
-      this.fetcherPKList.get()[idx].assertEquals(p);
+    this.fetcherPKList.assertEquals(fetcherPKList);
 
-      Circuit.if(Bool(indx0 != idx), (()=>{
-        // fetcherPkNew cannot equal to exising ones
-        Circuit.if(Bool(fpkNewTmp.equals(p)), (()=>{Field(1).assertEquals(Field(1))})(), (()=>{})());
-      })(), (()=>{
+    for (let index = 0; index < fetcherPKList.arr.length; index++) {
+      // fetcherPkNew cannot equal to exising ones
+      Circuit.if(fpkNewTmp.equals(fetcherPKList.arr[index]), (() => {
+        Field(1).assertEquals(Field(0))
+      })(), (() => { })());
+    }
+
+    for (let index = 0; index < fetcherPKList.arr.length; index++) {
+      Circuit.if(fpkOldTmp.equals(fetcherPKList.arr[index]), (() => {
         // provided fetcherPkOld must equal to the one at its own position
-        fetcherPKList[indx0].assertEquals(fpkOldTmp);
-      })());
-    });
-
-    fetcherPKList[Number.parseInt(pkIdx.toString())] = fpkNewTmp;
+        fetcherPKList.arr[index] = fpkNewTmp;
+      })(), 
+      // if not existing, then will not change the state.
+      (() => { })());
+    }
   }
 }
