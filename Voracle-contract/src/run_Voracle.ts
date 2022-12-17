@@ -39,9 +39,3 @@ async function localDeploy() {
 
 await localDeploy();
 
-
-
-
-
-
-setTimeout(shutdown, 0);
