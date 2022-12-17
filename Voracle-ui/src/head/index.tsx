@@ -78,7 +78,7 @@ function Head() {
       {
         name: "Apps",
         id: "Apps",
-        url: "https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fgladios.aresprotocol.io/#/explorer",
+        url: "./apps",
       },
     ],
     language: {
