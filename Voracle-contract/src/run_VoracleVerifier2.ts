@@ -6,18 +6,18 @@ import {
     PublicKey,
     shutdown,
 } from 'snarkyjs';
-import { VoracleVerifier } from './VoracleVerifier.js';
+import { VoracleVerifier2 } from './VoracleVerifier3.js';
 
 let proofsEnabled = true;
 
 let deployerAccount: PrivateKey,
     zkAppAddress: PublicKey,
     zkAppPrivateKey: PrivateKey,
-    zkApp: VoracleVerifier;
+    zkApp: VoracleVerifier2;
 
 
 await isReady;
-if (proofsEnabled) await VoracleVerifier.compile();
+if (proofsEnabled) await VoracleVerifier2.compile();
 console.log('........');
 /* 
 const Local = Mina.LocalBlockchain({ proofsEnabled });

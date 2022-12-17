@@ -6,26 +6,25 @@ import {
     PublicKey,
     shutdown,
 } from 'snarkyjs';
-import { VoracleVerifier } from './VoracleVerifier.js';
+import { Voracle } from './Voracle2.js';
 
 let proofsEnabled = true;
 
 let deployerAccount: PrivateKey,
     zkAppAddress: PublicKey,
     zkAppPrivateKey: PrivateKey,
-    zkApp: VoracleVerifier;
+    zkApp: Voracle;
 
 
 await isReady;
-if (proofsEnabled) await VoracleVerifier.compile();
-console.log('........');
-/* 
+if (proofsEnabled) Voracle.compile();
+
 const Local = Mina.LocalBlockchain({ proofsEnabled });
 Mina.setActiveInstance(Local);
 deployerAccount = Local.testAccounts[0].privateKey;
 zkAppPrivateKey = PrivateKey.random();
 zkAppAddress = zkAppPrivateKey.toPublicKey();
-zkApp = new VoracleVerifier(zkAppAddress);
+zkApp = new Voracle(zkAppAddress);
 
 
 async function localDeploy() {
@@ -45,4 +44,4 @@ await localDeploy();
 
 
 
-setTimeout(shutdown, 0); */
+setTimeout(shutdown, 0);
