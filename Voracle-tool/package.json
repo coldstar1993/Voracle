@@ -4,12 +4,6 @@
   "description": "",
   "author": "",
   "license": "Apache-2.0",
-  "keywords": [
-    "mina-zkapp",
-    "mina-zk-app",
-    "mina-dapp",
-    "zkapp"
-  ],
   "type": "module",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
@@ -18,7 +12,6 @@
     "buildw": "tsc -p tsconfig.json --watch",
     "coverage": "node --experimental-vm-modules --experimental-wasm-modules --experimental-wasm-threads node_modules/jest/bin/jest.js --coverage",
     "format": "prettier --write --ignore-unknown **/*",
-    "prepare": "husky install",
     "test": "node --experimental-vm-modules --experimental-wasm-modules --experimental-wasm-threads node_modules/jest/bin/jest.js",
     "testw": "node --experimental-vm-modules --experimental-wasm-modules --experimental-wasm-threads node_modules/jest/bin/jest.js --watch",
     "lint": "npx eslint src/* --fix"
@@ -48,6 +41,7 @@
     "snarkyjs": "^0.7.3"
   },
   "dependencies": {
-    "snarkyjs": "^0.7.3"
+    "snarkyjs": "^0.7.3",
+    "axios": "^0.27.2"
   }
 }
