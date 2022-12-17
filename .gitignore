@@ -1,10 +1,8 @@
 # NodeJS
 
-Voracle-contract/node_modules
-Voracle-fetcher/node_modules
-Voracle-ui/node_modules
+**/*/node_modules
 **/*/build
-coverage
+**/*/coverage
 
 # Editor
 .vscode
@@ -14,8 +12,8 @@ coverage
 
 # Never commit keys to Git!
 keys
-*.lock
-package-lock.json
+**/*/*.lock
+**/*/package-lock.json
 keys
 
 1.git
