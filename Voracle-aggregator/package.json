@@ -8,13 +8,11 @@
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "scripts": {
-    "schema": "node ./gen_schema.cjs",
+    "schema": "nodemon --watch ./src/swagger.type.ts --experimental-specifier-resolution=node ./gen_schema.cjs",
     "build": "node ./gen_schema.cjs && tsc -p tsconfig.json",
 
-    "dev:schema": "nodemon --watch ./src/swagger.type.ts --experimental-specifier-resolution=node ./gen_schema.cjs",
-    "dev:watch": "tsc -w -p tsconfig.json",
+    "dev:build": "node ./gen_schema.cjs && tsc -p tsconfig.json",
     "dev:start": "cross-env NODE_ENV=development SERVER_PORT=8080 nodemon --watch build --delay 2500ms --experimental-specifier-resolution=node ./build/src/app.js ",
-
     "dev": "cross-env NODE_ENV=development concurrently npm:dev:*",
 
     "format": "prettier --write --ignore-unknown **/*",
