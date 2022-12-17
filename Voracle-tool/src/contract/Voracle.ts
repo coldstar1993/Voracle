@@ -26,6 +26,8 @@ export class Voracle extends SmartContract {
     this.fetcherPKList.set(FetcherPKList.fromFields([fetcher0, fetcher1, fetcher2]));
   }
 
+
+
   /**
    * zkapp owner will help maintain the fetchers with signature by zkappPrivateKey.
    * 
@@ -33,24 +35,27 @@ export class Voracle extends SmartContract {
    * @param fetcherPkNew 
    * @param pkIdx 
    */
-  @method updateFetcher(fetcherPkOld: PublicKey, fetcherPkNew: PublicKey, pkIdx: UInt32) {
-    const indx0 = Number.parseInt(pkIdx.toString());
+  @method updateFetcher(fetcherPkOld: PublicKey, fetcherPkNew: PublicKey) {
     const fpkOldTmp = Poseidon.hash(fetcherPkOld.toFields());
     const fpkNewTmp = Poseidon.hash(fetcherPkNew.toFields());
 
     const fetcherPKList = this.fetcherPKList.get();
-    fetcherPKList.forEach((p, idx) => {
-      this.fetcherPKList.get()[idx].assertEquals(p);
+    this.fetcherPKList.assertEquals(fetcherPKList);
 
-      Circuit.if(Bool(indx0 != idx), (()=>{
-        // fetcherPkNew cannot equal to exising ones
-        Circuit.if(Bool(fpkNewTmp.equals(p)), (()=>{Field(1).assertEquals(Field(1))})(), (()=>{})());
-      })(), (()=>{
+    for (let index = 0; index < fetcherPKList.length; index++) {
+      // fetcherPkNew cannot equal to exising ones
+      Circuit.if(fpkNewTmp.equals(fetcherPKList[index]), (() => {
+        Field(1).assertEquals(Field(0))
+      })(), (() => { })());
+    }
+
+    for (let index = 0; index < fetcherPKList.length; index++) {
+      Circuit.if(fpkOldTmp.equals(fetcherPKList[index]), (() => {
         // provided fetcherPkOld must equal to the one at its own position
-        fetcherPKList[indx0].assertEquals(fpkOldTmp);
-      })());
-    });
-
-    fetcherPKList[Number.parseInt(pkIdx.toString())] = fpkNewTmp;
+        fetcherPKList[index] = fpkNewTmp;
+      })(), 
+      // if not existing, then will not change the state.
+      (() => { })());
+    }
   }
 }
