@@ -128,7 +128,7 @@ So to run the whole *baby* Voracle,  steps are as belows:
 Now, 3 **Voracle Fetcher** and one **Voracle Aggregator** start locally at different ports!
 `During runtime, **Voracle Aggregator** will forwards zkapp's data requests to 3 **Voracle Fetcher**.`
 
-And then, step into **Voracle-ui** consists of serveral zkapps for use cases, run `npm run start`, it will start at port 80.
+And then, step into **Voracle-ui** depending on **Voracle-tool** insides and consisting of serveral zkapps for use cases, run `npm run start`, it will start at port 80.
 
 Here, The whole `baby` Voracle is working!!
 
