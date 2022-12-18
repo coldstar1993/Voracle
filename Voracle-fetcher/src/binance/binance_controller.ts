@@ -37,7 +37,7 @@ export class BinanceController {
     const fetchPrivKey = PrivateKey.fromBase58(_privKey);
     const fetcherPk = fetchPrivKey.toPublicKey().toBase58();
     // hash
-    let apiKey1 = Field(apiKey);
+    let apiKey1 = Poseidon.hash(CircuitString.fromString(apiKey).toFields());
     let asset1 = CircuitString.fromString(asset);
     let free1 = Field(free);
     let locked1 = Field(locked);
