@@ -54,8 +54,8 @@ The *single model* only contains one oracle, which is trusted and will execute c
 Initial Stage, Voracle is still a little baby, providing basic service as below.
 
 * External API Access Service
-  * Obtain on-chain Data like from Mina.
-  * Obtain price data、account data from CEX like Binance.
+  * **Obtain on-chain Data like from Mina.**
+  * **Obtain price data、account data from CEX like Binance.**
 * VRF Service
 
 Next Stage, Voracle will grow with further Services as below:
@@ -92,6 +92,15 @@ To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet 
 
 * You could just import the key contract--*VoracleVerifier.ts* into your files,  then compile it & leverage it!! ( UseCase Demo is *run_VoracleVerifier.ts* in [Voracle Contracts](./Voracle-contract))
 * You could just import the key utility *VoralceUtil.ts* including complete api to invoke  **Voracle Aggregator** for current supported service into your files.
+
+### use case Demo
+There is a demo contract inside  **Voracle Contracts**.
+[demo_checkBinanceAccount.ts](./src/demo_checkBinanceAccount.ts)
+
+run it locally:
+[run_checkBinanceAccount.ts](./src/run_checkBinanceAccount.ts)
+
+tips: This demo will be placed with UI inside **Voracle ui**.
 
 
 ## How to run Voracle Locally

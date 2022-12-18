@@ -60,7 +60,7 @@ export class BinanceAccountVerifier extends SmartContract {
       let sig0 = aProof.proof.signature;
 
       // check timestamp
-      nwTimestamp.sub(timestamp0).assertLte(UInt64.from(24*60*60*1000));
+      timestamp0.add(UInt64.from(24*60*60*1000)).assertGt(nwTimestamp);
 
       // check asset type
       CircuitString.fromString('BTC').assertEquals(asset);
@@ -69,7 +69,9 @@ export class BinanceAccountVerifier extends SmartContract {
       free.add(locked).assertGte(Field(1e8));
 
       // hash
-      let hash0 = Poseidon.hash([apiKey, ...asset.toFields(), free, locked, ...timestamp0.toFields()]);
+      let btcFieldHash = Poseidon.hash(CircuitString.fromString('BTC').toFields());
+      let timestamp0Hash = Poseidon.hash(timestamp0.toFields());
+      let hash0 = Poseidon.hash([apiKey, btcFieldHash, free, locked, timestamp0Hash]);
       // verfiy sig
       voracleVerifierObj.verifySig(hash0, sig0, fetcherPk0);
 

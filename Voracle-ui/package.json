@@ -11,6 +11,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/swiper": "^5.4.3",
+    "antd": "^5.0.7",
+    "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "classnames": "^2.3.1",
     "gsap": "^3.11.2",
@@ -28,10 +30,9 @@
     "react-scripts": "4.0.3",
     "react-vis": "^1.11.7",
     "sass": "^1.38.1",
+    "snarkyjs": "^0.7.3",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1",
-    "axios": "^0.27.2",
-    "snarkyjs": "^0.7.3"
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "cross-env PORT=8081 react-scripts start",
