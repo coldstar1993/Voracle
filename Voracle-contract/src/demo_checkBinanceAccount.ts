@@ -32,7 +32,7 @@ export class BinanceAccountVerifier extends SmartContract {
       ...Permissions.default(),
       editState: Permissions.signature(),// must be 'signature' & cannot be 'proof'.
     });
-    this.voracleVerifier.set(PublicKey.fromBase58('B62qkeVixPwrn29LEYocGbRgpJu1FAfWA3sAnuqmtGNtjsaDn9Ev5oX'));
+    this.voracleVerifier.set(PublicKey.fromBase58('B62qmw27apC4GW9w4nze8AZy8vLSFoDq2kbVWZkP6LnnbUdTrAbf7mJ'));
   }
 
   /**
