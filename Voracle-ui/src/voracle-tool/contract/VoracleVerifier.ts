@@ -11,6 +11,7 @@ export class VoracleVerifier extends SmartContract {
       ...Permissions.default(),
       editState: Permissions.proofOrSignature(),
     });
+    this.voracleAddr.set(PublicKey.fromBase58('B62qjUdKdPu4aqm1jwi9Zuwi8Vm31k9sPVKiu9bwH8kS25CTg3wf3yr'));
   }
 
   /**
@@ -24,7 +25,7 @@ export class VoracleVerifier extends SmartContract {
     this.voracleAddr.set(voracleAddr0);
   }
 
-  @method verifySig(data: CircuitString, sig: Signature, fetcherPk: PublicKey) {
+  @method verifySig(data: Field, sig: Signature, fetcherPk: PublicKey) {
     const vaddr = this.voracleAddr.get();
     this.voracleAddr.assertEquals(vaddr);
     
@@ -32,10 +33,10 @@ export class VoracleVerifier extends SmartContract {
     const fetcherPKList = vocl.fetcherPKList.get();
     vocl.fetcherPKList.assertEquals(fetcherPKList);
 
-    const fpkHash = Poseidon.hash(fetcherPk.toFields());
     // provided fetcherPkOld must equal to the one at its own position
+    const fpkHash = Poseidon.hash(fetcherPk.toFields());
     fetcherPKList.arr.map(v=>v.equals(fpkHash)).reduce(Bool.or).assertTrue();
 
-    sig.verify(fetcherPk, [Poseidon.hash(data.toFields())]).assertTrue();
+    sig.verify(fetcherPk, [Poseidon.hash([data])]).assertTrue();
   }
 }

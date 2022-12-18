@@ -100,8 +100,8 @@ At the very beginning, use node:v16.13.0, which is the best.
 Currently, **Voracle Contract** consists of two contracts: `Voracle` and `VoracleVerifier`, which have been deployed to `Berkeley Network`:
   * `Voracle` : `B62qjUdKdPu4aqm1jwi9Zuwi8Vm31k9sPVKiu9bwH8kS25CTg3wf3yr`
     * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpZDa8mccnYWWYj3VjjsqXRMVzzjWLkAAs7Nu4Aaa5CMtnaniKK1
-  * `VoracleVerifier` : `B62qkeVixPwrn29LEYocGbRgpJu1FAfWA3sAnuqmtGNtjsaDn9Ev5oX`
-    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpZ8dcAeajLbn4rAQhsJpUjmAUFXn6ZiYj5BZzHeWPcyyLr7nTDK
+  * `VoracleVerifier` : `B62qmw27apC4GW9w4nze8AZy8vLSFoDq2kbVWZkP6LnnbUdTrAbf7mJ`
+    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpaLRS7y82BR7TwLEqi83SRmBAwbQNmurCQhHWhUhhhjBvXKmtUu
 
 Currently, There are fixed amount(=3) of **Voracle Fetcher**  registered into the **Voracle Contract**, which you could directly find inside the  contract file *Voracle.ts*. Therefore, During Mina Activity, You could easily boot the whole Voracle Service Locally.
 
