@@ -23,6 +23,9 @@ export class BinanceAccountProofList extends Struct({
   proofList:[BinanceAccountProof, BinanceAccountProof, BinanceAccountProof]
 }) { }
 
+/**
+ * verify Account info (confirmed by fetchers)
+ */
 export class BinanceAccountVerifier extends SmartContract {
   @state(PublicKey) voracleVerifier = State<PublicKey>();
   
@@ -36,7 +39,7 @@ export class BinanceAccountVerifier extends SmartContract {
   }
 
   /**
-   * 
+   * verify if user's btc balance inside Binance has been greater than or equal 1btc last 24h.
    */
   @method verifyBalance_ge_1btc_inLast24h(binanceAccountProofList: BinanceAccountProofList) {
     const vv=this.voracleVerifier.get();
