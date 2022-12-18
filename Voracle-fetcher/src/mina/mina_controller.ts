@@ -2,7 +2,7 @@ import { Get, JsonController, NotFoundError, Param, QueryParam } from 'routing-c
 import { Service } from 'typedi';
 import { OpenAPI, ResponseSchema } from 'routing-controllers-openapi';
 import { MinaApiService } from "./mina_service";
-import { Encoding, Poseidon, PrivateKey } from 'snarkyjs';
+import { Encoding, Poseidon, PrivateKey, Signature } from 'snarkyjs';
 
 import { ApiResp } from '../common/api_resp';
 import { BlockSummaryResponse, NetworkSupplyStatusResponse, CommonResponse } from './models/response';
@@ -33,8 +33,8 @@ export class MinaController {
     let preimage = { blockSummary };
     let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
     // sign
-    // TODO
-    const fetchSig = ['', ''];
+    const fetchSig = Signature.create(fetchPrivKey, [hash]).toJSON();
+
     return ApiResp.Ok({ fetcherPk, pkIdx, data: blockSummary, fetchSig } as BlockSummaryResponse);
   }
 
@@ -61,8 +61,7 @@ export class MinaController {
     let preimage = { blockchainLength, circulatingSupply, lockedSupply };
     let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
     // sign
-    // TODO
-    const fetchSig = ['', ''];
+    const fetchSig = Signature.create(fetchPrivKey, [hash]).toJSON();
     return ApiResp.Ok({ fetcherPk, pkIdx, data: { blockchainLength, circulatingSupply, lockedSupply }, fetchSig } as NetworkSupplyStatusResponse);
   }
 
@@ -71,7 +70,7 @@ export class MinaController {
     description:'maximum: 10, minimum: 1'
   })
   @Get('/block/latest/:num')
-  @ResponseSchema('BlockSupplyStatusResponse')
+  @ResponseSchema('NetworkSupplyStatusResponse')
   public async obtainBlockLatestN(
     @Param('num') num: number
   ): Promise<ApiResp<NetworkSupplyStatusResponse>> {
@@ -86,8 +85,8 @@ export class MinaController {
     let preimage = latestBlockN;
     let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
     // sign
-    // TODO
-    const fetchSig = ['', ''];
+    const fetchSig = Signature.create(fetchPrivKey, [hash]).toJSON();
+
     return ApiResp.Ok({ fetcherPk, pkIdx, data: latestBlockN, fetchSig } as NetworkSupplyStatusResponse);
   }
 
@@ -109,8 +108,8 @@ export class MinaController {
     let preimage = targetBlock;
     let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
     // sign
-    // TODO
-    const fetchSig = ['', ''];
+    const fetchSig = Signature.create(fetchPrivKey, [hash]).toJSON();
+
     return ApiResp.Ok({ fetcherPk, pkIdx, data: targetBlock} as CommonResponse);
   }
 }

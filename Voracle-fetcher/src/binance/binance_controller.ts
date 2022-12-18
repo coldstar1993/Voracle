@@ -2,7 +2,7 @@ import { Get, JsonController, NotFoundError, Param, QueryParam } from 'routing-c
 import { Service } from 'typedi';
 import { OpenAPI, ResponseSchema } from 'routing-controllers-openapi';
 import { BinanceApiService } from "./binance_service";
-import { Encoding, Poseidon, PrivateKey } from 'snarkyjs';
+import { Encoding, Poseidon, PrivateKey, Signature } from 'snarkyjs';
 import { AccountResonse } from './models/response';
 import { ApiResp } from '../common/api_resp';
 
@@ -37,9 +37,9 @@ export class BinanceController {
     // hash
     let preimage = { apiKey, queryParamSegment, asset, free, locked };
     let hash = Poseidon.hash(Encoding.stringToFields(JSON.stringify(preimage)));
+
     // sign
-    // TODO
-    const fetchSig = ['', ''];
+    const fetchSig = Signature.create(fetchPrivKey, [hash]).toJSON();
     return ApiResp.Ok({ fetcherPk, pkIdx, asset, free, locked, fetchSig } as AccountResonse);
   }
 }

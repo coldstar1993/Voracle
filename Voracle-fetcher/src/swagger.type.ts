@@ -4,7 +4,7 @@ export interface AccountResonse {
   asset: string,
   free: string,
   locked: string,
-  fetchSig: [string, string],
+  fetchSig: any,
 }
 
 export interface BlockSummary {
@@ -30,19 +30,19 @@ export interface BlockSummaryResponse {
   fetcherPk: string,
   pkIdx: string,
   data: BlockSummary
-  fetchSig: [string, string],
+  fetchSig: any,
 }
 
 export interface NetworkSupplyStatusResponse {
   fetcherPk: string,
   pkIdx: string,
   data: { blockchainLength: string, circulatingSupply: string, lockedSupply: string },
-  fetchSig: [string, string],
+  fetchSig: any,
 }
 
 export interface CommonResponse {
   fetcherPk: string,
   pkIdx: string,
   data: any,
-  fetchSig: [string, string],
+  fetchSig: any,
 }

@@ -4,5 +4,5 @@ export interface AccountResonse {
     asset: string,
     free: string,
     locked: string,
-    fetchSig: [string, string],
+    fetchSig: any,
 }
