@@ -11,6 +11,7 @@ export class VoracleVerifier extends SmartContract {
       ...Permissions.default(),
       editState: Permissions.proofOrSignature(),
     });
+    this.voracleAddr.set(PublicKey.fromBase58('B62qjUdKdPu4aqm1jwi9Zuwi8Vm31k9sPVKiu9bwH8kS25CTg3wf3yr'));
   }
 
   /**

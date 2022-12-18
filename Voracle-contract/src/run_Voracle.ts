@@ -15,10 +15,10 @@ let deployerAccount: PrivateKey,
     zkAppPrivateKey: PrivateKey,
     zkApp: Voracle;
 
-
+// 
 await isReady;
-if (proofsEnabled) Voracle.compile();
-
+if (proofsEnabled) await Voracle.compile();
+ 
 const Local = Mina.LocalBlockchain({ proofsEnabled });
 Mina.setActiveInstance(Local);
 deployerAccount = Local.testAccounts[0].privateKey;

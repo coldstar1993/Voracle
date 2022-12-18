@@ -5,9 +5,11 @@ import { Field, SmartContract, state, State, method, Struct, DeployArgs, Permiss
  * This design is not good to fix the number of '*fetchers*'. 
  * so will use **MerkleMap** & **MerkleMapWitness** to replace this design
  */
-export class FetcherPKList extends Struct({arr:[
-  Field, Field, Field
-]}) { }
+export class FetcherPKList extends Struct({
+  arr: [
+    Field, Field, Field
+  ]
+}) { }
 
 export class Voracle extends SmartContract {
   @state(FetcherPKList) fetcherPKList = State<FetcherPKList>();
@@ -23,7 +25,7 @@ export class Voracle extends SmartContract {
     let fetcher1 = Poseidon.hash(PublicKey.fromBase58("B62qk522nBpiyG8sowkEbao2csaGm6PBtTUwSSLxkg6QTRfVDjG5xdg").toFields());
     let fetcher2 = Poseidon.hash(PublicKey.fromBase58("B62qooLE6R54n9vBkqf5N2w4kzB3ZSvGRXcXATXnX86kpiFp7jCDd7r").toFields());
 
-    this.fetcherPKList.set(new FetcherPKList({arr:[fetcher0, fetcher1, fetcher2]}));
+    this.fetcherPKList.set(new FetcherPKList({ arr: [fetcher0, fetcher1, fetcher2] }));
   }
 
 
@@ -42,20 +44,14 @@ export class Voracle extends SmartContract {
     const fetcherPKList = this.fetcherPKList.get();
     this.fetcherPKList.assertEquals(fetcherPKList);
 
-    for (let index = 0; index < fetcherPKList.arr.length; index++) {
-      // fetcherPkNew cannot equal to exising ones
-      Circuit.if(fpkNewTmp.equals(fetcherPKList.arr[index]), (() => {
-        Field(1).assertEquals(Field(0))
-      })(), (() => { })());
-    }
+    // fetcherPkNew cannot equal to exising ones 
+    fetcherPKList.arr.map(v => v.equals(fpkNewTmp)).reduce(Bool.or).assertFalse();
+    // provided fetcherPkOld must equal to the one at its own position
+    fetcherPKList.arr.map(v => v.equals(fpkOldTmp)).reduce(Bool.or).assertTrue();
 
+    // replace
     for (let index = 0; index < fetcherPKList.arr.length; index++) {
-      Circuit.if(fpkOldTmp.equals(fetcherPKList.arr[index]), (() => {
-        // provided fetcherPkOld must equal to the one at its own position
-        fetcherPKList.arr[index] = fpkNewTmp;
-      })(), 
-      // if not existing, then will not change the state.
-      (() => { })());
+      fetcherPKList.arr[index] = Circuit.if(fpkOldTmp.equals(fetcherPKList.arr[index]), fpkNewTmp, fetcherPKList.arr[index]);
     }
   }
 }

@@ -19,7 +19,7 @@ let deployerAccount: PrivateKey,
 await isReady;
 if (proofsEnabled) await VoracleVerifier.compile();
 console.log('........');
-/* 
+
 const Local = Mina.LocalBlockchain({ proofsEnabled });
 Mina.setActiveInstance(Local);
 deployerAccount = Local.testAccounts[0].privateKey;
@@ -45,4 +45,4 @@ await localDeploy();
 
 
 
-setTimeout(shutdown, 0); */
+setTimeout(shutdown, 0);
