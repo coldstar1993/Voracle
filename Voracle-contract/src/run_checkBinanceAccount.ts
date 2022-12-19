@@ -1,41 +1,87 @@
 /* eslint-disable no-unused-vars */
 import { AccountUpdate, CircuitString, Field, isReady, Mina, Poseidon, PrivateKey, PublicKey, shutdown, Signature, UInt64 } from 'snarkyjs';
 
-import { BinanceAccount, BinanceAccountProof, BinanceAccountProofList, BinanceAccountVerifier } from './demo_checkBinanceAccount.js';
+import { Voracle } from "./Voracle.js";
+import { VoracleVerifier } from "./VoracleVerifier2.js";
+import { BinanceAccount, BinanceAccountProof, BinanceAccountProofList, BinanceAccountVerifier } from './demo_checkBinanceAccount2.js';
 
 await isReady;
 let proofsEnabled = true;
 
-let xx = CircuitString.fromString('BTC').toFields();
-let yy = UInt64.from(1671353770000).toFields();
-let zz = [...xx, ...yy];
-
 let deployerAccount: PrivateKey,
-    zkAppAddress: PublicKey,
-    zkAppPrivateKey: PrivateKey,
-    zkApp: BinanceAccountVerifier;
+    zkAppBinanceAccountVerifierAddress: PublicKey,
+    zkAppBinanceAccountVerifierPrivateKey: PrivateKey,
+    zkAppBinanceAccountVerifier: BinanceAccountVerifier;
 
-if (proofsEnabled) await BinanceAccountVerifier.compile();
+await Voracle.compile();
+await VoracleVerifier.compile();
+await BinanceAccountVerifier.compile();
 console.log('........');
 
 const Local = Mina.LocalBlockchain({ proofsEnabled });
 Mina.setActiveInstance(Local);
 deployerAccount = Local.testAccounts[0].privateKey;
-zkAppPrivateKey = PrivateKey.random();
-zkAppAddress = zkAppPrivateKey.toPublicKey();
-zkApp = new BinanceAccountVerifier(zkAppAddress);
 
-async function localDeploy() {
+let zkAppVoraclePrivateKey = PrivateKey.random();
+let zkAppVoracleAddress = zkAppVoraclePrivateKey.toPublicKey();
+let zkAppVoracle = new Voracle(zkAppVoracleAddress);
+
+let zkAppVoracleVerifierPrivateKey = PrivateKey.random();
+let zkAppVoracleVerifierAddress = zkAppVoracleVerifierPrivateKey.toPublicKey();
+let zkAppVoracleVerifier = new VoracleVerifier(zkAppVoracleVerifierAddress);
+
+zkAppBinanceAccountVerifierPrivateKey = PrivateKey.random();
+zkAppBinanceAccountVerifierAddress = zkAppBinanceAccountVerifierPrivateKey.toPublicKey();
+zkAppBinanceAccountVerifier = new BinanceAccountVerifier(zkAppBinanceAccountVerifierAddress);
+
+async function localDeployVoracle() {
     const txn = await Mina.transaction(deployerAccount, () => {
         AccountUpdate.fundNewAccount(deployerAccount);
-        zkApp.deploy();
+        zkAppVoracle.deploy();
     });
     await txn.prove();
     // this tx needs .sign(), because `deploy()` adds an account update that requires signature authorization
-    await txn.sign([zkAppPrivateKey]).send();
+    await txn.sign([zkAppVoraclePrivateKey]).send();
 }
+await localDeployVoracle();
 
-await localDeploy();
+async function localDeployVoracleVerifier() {
+    const txn = await Mina.transaction(deployerAccount, () => {
+        AccountUpdate.fundNewAccount(deployerAccount);
+        zkAppVoracleVerifier.deploy();
+    });
+    await txn.prove();
+    // this tx needs .sign(), because `deploy()` adds an account update that requires signature authorization
+    await txn.sign([zkAppVoracleVerifierPrivateKey]).send();
+}
+await localDeployVoracleVerifier();
+
+async function localDeployBinanceAccountVerifier() {
+    const txn = await Mina.transaction(deployerAccount, () => {
+        AccountUpdate.fundNewAccount(deployerAccount);
+        zkAppBinanceAccountVerifier.deploy();
+    });
+    await txn.prove();
+    // this tx needs .sign(), because `deploy()` adds an account update that requires signature authorization
+    await txn.sign([zkAppBinanceAccountVerifierPrivateKey]).send();
+}
+await localDeployBinanceAccountVerifier();
+
+const tx1 = await Mina.transaction(deployerAccount, ()=>{
+    zkAppVoracleVerifier.changeVoracleAddr(zkAppVoracleAddress);
+});
+await tx1.prove();
+await tx1.sign([zkAppVoracleVerifierPrivateKey]);
+await tx1.send();
+console.log(`after zkAppVoracleVerifier.voracleAddr: ${zkAppVoracleVerifier.voracleAddr.get().toBase58()}`);
+
+const tx2 = await Mina.transaction(deployerAccount, ()=>{
+    zkAppBinanceAccountVerifier.changeVoracleVerifierAddr(zkAppVoracleVerifierAddress);
+});
+await tx2.prove();
+await tx2.sign([zkAppBinanceAccountVerifierPrivateKey]);
+await tx2.send();
+console.log(`after zkAppBinanceAccountVerifier.voracleVerifier: ${zkAppBinanceAccountVerifier.voracleVerifier.get().toBase58()}`);
 
 
 // verify if user's btc balance inside Binance has been greater than or equal 1btc last 24h.
@@ -56,8 +102,11 @@ let free01 = Field(free0);
 let locked01 = Field(locked0);
 let timestamp01 = UInt64.from(timestamp0);
 let hash0 = Poseidon.hash([apiKey01, ...asset01.toFields(), free01, locked01, ...timestamp01.toFields()]);
+console.log('hash0.toJSON(): '+hash0.toJSON());
 // sign
 const fetchSig0 = Signature.create(PrivateKey.fromBase58(fetcherPk0), [hash0]).toJSON();
+
+Signature.fromJSON(fetchSig0).verify(PrivateKey.fromBase58(fetcherPk0).toPublicKey(), [hash0]).assertTrue();
 
 const binanceAccount0 = new BinanceAccount({ apiKey: apiKey01, asset: asset01, free: free01, locked: locked01, timestamp: timestamp01 });
 const binanceAccountProof0 = new BinanceAccountProof({proof:{
@@ -82,6 +131,8 @@ let free11 = Field(free1);
 let locked11 = Field(locked1);
 let timestamp11 = UInt64.from(timestamp1);
 let hash1 = Poseidon.hash([apiKey11, ...asset11.toFields(), free11, locked11, ...timestamp11.toFields()]);
+console.log('hash1.toJSON(): '+hash1.toJSON());
+
 // sign
 const fetchSig1 = Signature.create(PrivateKey.fromBase58(fetcherPk1), [hash1]).toJSON();
 
@@ -108,6 +159,8 @@ let free21 = Field(free2);
 let locked21 = Field(locked2);
 let timestamp21 = UInt64.from(timestamp2);
 let hash2 = Poseidon.hash([apiKey21, ...asset21.toFields(), free21, locked21, ...timestamp21.toFields()]);
+console.log('hash2.toJSON(): '+hash2.toJSON());
+
 // sign
 const fetchSig2 = Signature.create(PrivateKey.fromBase58(fetcherPk2), [hash2]).toJSON();
 
@@ -123,7 +176,7 @@ const binanceAccountProofList = new BinanceAccountProofList({proofList:[binanceA
 
 // 3. verify
 let tx = await Mina.transaction(deployerAccount, () => {
-    zkApp.verifyBalance_ge_1btc_inLast24h(binanceAccountProofList);
+    zkAppBinanceAccountVerifier.verifyBalance_ge_1btc_inLast24h(binanceAccountProofList);
   });
   let [proof] = await tx.prove();
   await tx.send();

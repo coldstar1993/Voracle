@@ -69,11 +69,17 @@ export class BinanceAccountVerifier extends SmartContract {
       free.add(locked).assertGte(Field(1e8));
 
       // hash
-      let btcFieldHash = Poseidon.hash(CircuitString.fromString('BTC').toFields());
-      let timestamp0Hash = Poseidon.hash(timestamp0.toFields());
-      let hash0 = Poseidon.hash([apiKey, btcFieldHash, free, locked, timestamp0Hash]);
+      Circuit.log('0')
+      let btcFields = CircuitString.fromString('BTC').toFields();
+      Circuit.log('1')
+      let timestamp0Fields = timestamp0.toFields();
+      Circuit.log('2')
+      let hash0 = Poseidon.hash([apiKey, ...btcFields, free, locked, ...timestamp0Fields]);
+      Circuit.log('3')
+
       // verfiy sig
       voracleVerifierObj.verifySig(hash0, sig0, fetcherPk0);
+      Circuit.log('4')
 
     });
 

@@ -28,15 +28,23 @@ export class VoracleVerifier extends SmartContract {
   @method verifySig(data: Field, sig: Signature, fetcherPk: PublicKey) {
     const vaddr = this.voracleAddr.get();
     this.voracleAddr.assertEquals(vaddr);
-    
+    Circuit.log('01');
     const vocl = new Voracle(this.voracleAddr.get());
+    Circuit.log('02');
+
     const fetcherPKList = vocl.fetcherPKList.get();
+    Circuit.log('021');
+
     vocl.fetcherPKList.assertEquals(fetcherPKList);
+    Circuit.log('03');
 
     // provided fetcherPkOld must equal to the one at its own position
     const fpkHash = Poseidon.hash(fetcherPk.toFields());
+    Circuit.log('04');
     fetcherPKList.arr.map(v=>v.equals(fpkHash)).reduce(Bool.or).assertTrue();
+    Circuit.log('05');
 
-    sig.verify(fetcherPk, [Poseidon.hash([data])]).assertTrue();
+    sig.verify(fetcherPk, [data]).assertTrue();
+    Circuit.log('06');
   }
 }
