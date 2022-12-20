@@ -101,6 +101,7 @@ run it locally:
 [run_checkBinanceAccount.ts](./Voracle-contract/src/run_checkBinanceAccount.ts)
 
 tips: This demo will be placed with UI inside **Voracle ui**.
+![voralce_zkapp_binanceAccountDem](./pic/voralce_zkapp_binanceAccountDemo.PNG)
 
 
 ## How to run Voracle Locally
