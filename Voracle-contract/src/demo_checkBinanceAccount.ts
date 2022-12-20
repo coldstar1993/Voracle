@@ -33,9 +33,20 @@ export class BinanceAccountVerifier extends SmartContract {
     super.deploy(args);
     this.setPermissions({
       ...Permissions.default(),
-      editState: Permissions.signature(),// must be 'signature' & cannot be 'proof'.
+      editState: Permissions.proofOrSignature(),// must be 'signature' & cannot be 'proof'.
     });
     this.voracleVerifier.set(PublicKey.fromBase58('B62qmw27apC4GW9w4nze8AZy8vLSFoDq2kbVWZkP6LnnbUdTrAbf7mJ'));
+  }
+
+  /**
+   * old key cannot equal to new key.
+   * @param voracleAddr0 
+   */
+  @method changeVoracleVerifierAddr(voracleVerifierAddr0: PublicKey) {
+    const vaddr = this.voracleVerifier.get();
+    this.voracleVerifier.assertEquals(vaddr);
+
+    this.voracleVerifier.set(voracleVerifierAddr0);
   }
 
   /**
@@ -64,7 +75,6 @@ export class BinanceAccountVerifier extends SmartContract {
 
       // check asset type
       CircuitString.fromString('BTC').assertEquals(asset);
-
       // check free + locked >= 1btc
       free.add(locked).assertGte(Field(1e8));
 
@@ -75,12 +85,10 @@ export class BinanceAccountVerifier extends SmartContract {
       let timestamp0Fields = timestamp0.toFields();
       Circuit.log('2');
       let hash0 = Poseidon.hash([apiKey, ...btcFields, free, locked, ...timestamp0Fields]);
-      Circuit.log('3')
-
+      Circuit.log('3');
       // verfiy sig
       voracleVerifierObj.verifySig(hash0, sig0, fetcherPk0);
       Circuit.log('4');
-
     });
 
   }

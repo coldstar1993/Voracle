@@ -2,8 +2,8 @@
 import { AccountUpdate, CircuitString, Field, isReady, Mina, Poseidon, PrivateKey, PublicKey, shutdown, Signature, UInt64 } from 'snarkyjs';
 
 import { Voracle } from "./Voracle.js";
-import { VoracleVerifier } from "./VoracleVerifier2.js";
-import { BinanceAccount, BinanceAccountProof, BinanceAccountProofList, BinanceAccountVerifier } from './demo_checkBinanceAccount2.js';
+import { VoracleVerifier } from "./VoracleVerifier.js";
+import { BinanceAccount, BinanceAccountProof, BinanceAccountProofList, BinanceAccountVerifier } from './demo_checkBinanceAccount.js';
 
 await isReady;
 let proofsEnabled = true;
