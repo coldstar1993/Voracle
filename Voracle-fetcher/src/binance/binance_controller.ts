@@ -30,7 +30,7 @@ export class BinanceController {
     let targetBalance = account?.balances?.filter((b) => b.asset == asset.toUpperCase())?.at(0);
     let free = (Number.parseFloat((targetBalance?.free) ?? '0')* 1e8).toFixed(0);
     let locked = (Number.parseFloat((targetBalance?.locked) ?? '0')* 1e8).toFixed(0);
-    let timestamp = Number.parseInt(queryParamSegment.split('&').filter(v=>v.startsWith('timestamp'))[0].split('=')[0]);
+    let timestamp = Number.parseInt(queryParamSegment.split('&').filter(v=>v.startsWith('timestamp'))[0].split('=')[1]);
     // get fetcher key
     const _privKey = process.env.FETCHER_PRIV_KEY as string;
     const pkIdx = process.env.FETCHER_PUB_KEY_IDX as string;

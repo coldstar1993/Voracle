@@ -9,6 +9,7 @@ import Road from "./road";
 import Join from "./join";
 import classnames from "classnames";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BinanceAccount } from "./demo/binance/account_verifier";
 
 function App() {
   const [widgetShow, setWidgetShow] = useState(true);
@@ -59,6 +60,9 @@ function App() {
                       </div>
                   }
                 </div>
+              </Route>
+              <Route exact path="/binanceAccountCheck">
+                  <BinanceAccount />
               </Route>
             </Switch>
           </Suspense>

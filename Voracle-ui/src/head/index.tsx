@@ -66,7 +66,7 @@ function Head() {
           {
             name: t("Documentation"),
             id: "Documentation",
-            url: "https://github.com/coldstar1993/v-Oracle",
+            url: "https://github.com/coldstar1993/Voracle",
           },
           {
             name: t("Contact"),
@@ -78,7 +78,7 @@ function Head() {
       {
         name: "Apps",
         id: "Apps",
-        url: "./apps",
+        url: "./binanceAccountCheck",
       },
     ],
     language: {
@@ -599,24 +599,6 @@ function Head() {
           <div className="head-content">
             <div className="head-warp">
               <p className="content-desc">{head.desc}</p>
-              <p className="content-btn">
-                <a
-                  href={head.farmsUrl}
-                  className="farmBtnText"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {head.farmBtnText}
-                </a>
-                <a
-                  className="uniswapBtnText"
-                  href={head.uniswapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {head.uniswapBtnText}
-                </a>
-              </p>
               <div className="substrat">
                 {window.screen.width ? (
                   <div className="substratLogo-con">

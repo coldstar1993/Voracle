@@ -25,7 +25,7 @@ export class BinanceController {
     @QueryParam("apiKey") apiKey: string,
     @QueryParam("queryParamSegment") queryParamSegment: string
   ): Promise<ApiResp<AccountResonseList>> {
-    const accountResonseList = await this.binanceService.obtainAccount(asset, apiKey, queryParamSegment);
+    const accountResonseList = await this.binanceService.obtainAccount(apiKey, asset, queryParamSegment);
     return ApiResp.Ok(accountResonseList);
   }
 }
