@@ -96,6 +96,8 @@ To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet 
 ### use case Demo
 There is a demo contract inside  **Voracle Contracts**.
 [demo_checkBinanceAccount.ts](./Voracle-contract/src/demo_checkBinanceAccount.ts)
+  * deployed address: `B62qrGocoS7WnyFh7WL2opCJSzRWb2zBxCius7CxQf8D2qYojCsywpq`
+    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpZPDLus9HSe47yAAtp2neHzsxWYarGVoZvGeTXQkw2c7XffDfQK
 
 run it locally:
 [run_checkBinanceAccount.ts](./Voracle-contract/src/run_checkBinanceAccount.ts)
@@ -110,8 +112,8 @@ At the very beginning, use node:v16.13.0, which is the best.
 Currently, **Voracle Contract** consists of two contracts: `Voracle` and `VoracleVerifier`, which have been deployed to `Berkeley Network`:
   * `Voracle` : `B62qjUdKdPu4aqm1jwi9Zuwi8Vm31k9sPVKiu9bwH8kS25CTg3wf3yr`
     * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpZDa8mccnYWWYj3VjjsqXRMVzzjWLkAAs7Nu4Aaa5CMtnaniKK1
-  * `VoracleVerifier` : `B62qmw27apC4GW9w4nze8AZy8vLSFoDq2kbVWZkP6LnnbUdTrAbf7mJ`
-    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpaLRS7y82BR7TwLEqi83SRmBAwbQNmurCQhHWhUhhhjBvXKmtUu
+  * `VoracleVerifier` : `B62qpmUeSRSQcksHGoDTMnzzi53Bo7Qn2BaTY9Zc4PbM3btypNtoxSH`
+    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpYSD4refAHCU1qeYXGHMNRzEeJi8vViSqSzDLedaktTRcoXzCDk
 
 Currently, There are fixed amount(=3) of **Voracle Fetcher**  registered into the **Voracle Contract**, which you could directly find inside the  contract file *Voracle.ts*. Therefore, During Mina Activity, You could easily boot the whole Voracle Service Locally.
 

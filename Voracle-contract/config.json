@@ -12,6 +12,12 @@
       "keyPath": "keys/berkeley-VoracleVerifier.json",
       "fee": "0.1",
       "smartContract": "VoracleVerifier"
+    },
+    "berkeley-binanceaccount": {
+      "url":"https://proxy.berkeley.minaexplorer.com/graphql",
+      "keyPath": "keys/berkeley-BinanceAccount.json",
+      "fee": "0.1",
+      "smartContract": "BinanceAccountVerifier"
     }
   }
 }
