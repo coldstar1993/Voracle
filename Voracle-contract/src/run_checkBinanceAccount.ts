@@ -14,9 +14,11 @@ let deployerAccount: PrivateKey,
     zkAppBinanceAccountVerifier: BinanceAccountVerifier;
 
 await Voracle.compile();
+console.log('Voracle.compile() done.');
 await VoracleVerifier.compile();
+console.log('VoracleVerifier.compile() done.');
 await BinanceAccountVerifier.compile();
-console.log('........');
+console.log('BinanceAccountVerifier.compile() done.');
 
 const Local = Mina.LocalBlockchain({ proofsEnabled });
 Mina.setActiveInstance(Local);
@@ -112,7 +114,7 @@ const binanceAccount0 = new BinanceAccount({ apiKey: apiKey01, asset: asset01, f
 const binanceAccountProof0 = new BinanceAccountProof({proof:{
     binanceAccount: binanceAccount0,
     fetcherPk: PrivateKey.fromBase58(fetcherPk0).toPublicKey(),
-    signature: fetchSig0
+    signature: Signature.fromJSON(fetchSig0)
 }});
 
 // ==============response from fetcher node1
@@ -140,7 +142,7 @@ const binanceAccount1 = new BinanceAccount({ apiKey: apiKey11, asset: asset11, f
 const binanceAccountProof1 = new BinanceAccountProof({proof:{
     binanceAccount: binanceAccount1,
     fetcherPk: PrivateKey.fromBase58(fetcherPk1).toPublicKey(),
-    signature: fetchSig1
+    signature: Signature.fromJSON(fetchSig1)
 }});
 
 // ==============response from fetcher node2
@@ -168,7 +170,7 @@ const binanceAccount2 = new BinanceAccount({ apiKey: apiKey21, asset: asset21, f
 const binanceAccountProof2 = new BinanceAccountProof({proof:{
     binanceAccount: binanceAccount2,
     fetcherPk: PrivateKey.fromBase58(fetcherPk2).toPublicKey(),
-    signature: fetchSig2
+    signature: Signature.fromJSON(fetchSig2)
 }});
 
 // 2. aggregate all proofs
