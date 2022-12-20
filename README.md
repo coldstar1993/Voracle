@@ -96,8 +96,8 @@ To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet 
 ### use case Demo
 There is a demo contract inside  **Voracle Contracts**.
 [demo_checkBinanceAccount.ts](./Voracle-contract/src/demo_checkBinanceAccount.ts)
-  * deployed address: `B62qrGocoS7WnyFh7WL2opCJSzRWb2zBxCius7CxQf8D2qYojCsywpq`
-    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpZPDLus9HSe47yAAtp2neHzsxWYarGVoZvGeTXQkw2c7XffDfQK
+  * deployed address: `B62qpVPbuU3hitFQBmgp3jcNN62DsU6jd9Rku6fgaDakJWMfdj2Wewc`
+    * deployed tx: https://berkeley.minaexplorer.com/transaction/CkpYWXgLaHj26AeGPKKVXdQVqumUYeUV6SeQPpmBJNvu5EBjx8SVg
 
 run it locally:
 [run_checkBinanceAccount.ts](./Voracle-contract/src/run_checkBinanceAccount.ts)

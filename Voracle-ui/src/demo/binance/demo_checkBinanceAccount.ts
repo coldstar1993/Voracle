@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Field, SmartContract, state, State, method, Struct, DeployArgs, Permissions, PublicKey, Poseidon, CircuitString, Signature, Bool, Circuit, UInt32, UInt64 } from 'snarkyjs';
-import { VoracleVerifier } from "../../voracle-tool/contract/VoracleVerifier";
+import { VoracleVerifier } from "./VoracleVerifier.js";
 
 export class BinanceAccount extends Struct({
   apiKey: Field,
@@ -35,7 +35,7 @@ export class BinanceAccountVerifier extends SmartContract {
       ...Permissions.default(),
       editState: Permissions.proofOrSignature(),// must be 'signature' & cannot be 'proof'.
     });
-    this.voracleVerifier.set(PublicKey.fromBase58('B62qmw27apC4GW9w4nze8AZy8vLSFoDq2kbVWZkP6LnnbUdTrAbf7mJ'));
+    this.voracleVerifier.set(PublicKey.fromBase58('B62qpmUeSRSQcksHGoDTMnzzi53Bo7Qn2BaTY9Zc4PbM3btypNtoxSH'));
   }
 
   /**
