@@ -95,10 +95,10 @@ To be SIMPLIFIED for Mina Activity, currently **Voracle Tool&Libs** has not yet 
 
 ### use case Demo
 There is a demo contract inside  **Voracle Contracts**.
-[demo_checkBinanceAccount.ts](./src/demo_checkBinanceAccount.ts)
+[demo_checkBinanceAccount.ts](./Voracle-contract/src/demo_checkBinanceAccount.ts)
 
 run it locally:
-[run_checkBinanceAccount.ts](./src/run_checkBinanceAccount.ts)
+[run_checkBinanceAccount.ts](./Voracle-contract/src/run_checkBinanceAccount.ts)
 
 tips: This demo will be placed with UI inside **Voracle ui**.
 
