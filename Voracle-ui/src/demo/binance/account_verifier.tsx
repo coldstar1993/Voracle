@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Button, Col, Row } from 'antd';
+import { Button, Col, Row, Spin } from 'antd';
 import { createHmac } from 'crypto';
 import axios from 'axios';
 
 export function BinanceAccount() {
-    const [aggregatedRs, setAggregatedRs] = useState({});
+    const [aggregatedRs, setAggregatedRs] = useState([]);
+    let [showSpin, setShowSpin] = useState(false);
     let callAggreggator = () => {
+        setAggregatedRs([]);
+        setShowSpin(true);
         let recvWindow0 = 5000;
         let timestamp0 = Date.now();
         let queryString = `recvWindow%3D${recvWindow0}%26timestamp%3D${timestamp0}`;
@@ -26,6 +29,8 @@ export function BinanceAccount() {
                 apiKey, queryParamSegment
             }
         }).then((rs) => {
+            setShowSpin(false);
+
             console.log(rs);
             console.log('=====');
             console.log(rs.data.data.data);
@@ -100,13 +105,23 @@ export function BinanceAccount() {
                             <Col span={1}></Col>
                         </Row>
                         <Row>
-                            <p>{(aggregatedRs as any).data}</p>
+                            <div style={{display: showSpin?'block':'none'}}>
+                                <Spin />
+                            </div>
+                            <p id='callResult' style={{margin:'5px', display: aggregatedRs == null || aggregatedRs == undefined || aggregatedRs.length === 0?'none':'block'}}>
+                                <span  style={{color: 'green', fontSize: '16px', display: Number.parseInt(aggregatedRs[0]?.data?.account.free)+Number.parseInt(aggregatedRs[0]?.data?.account.locked)>=1?'block':'none'}}>Verified Result: Your BTC is Greater than Equal 1BTC.<br/></span>
+                                <span  style={{color: 'green', fontSize: '16px', display: Number.parseInt(aggregatedRs[0]?.data?.account.free)+Number.parseInt(aggregatedRs[0]?.data?.account.locked) < 1?'block':'none'}}>Verified Result: Your BTC is Less Than 1BTC.<br/></span>
+                                Fetchers Responses:<br></br>
+                                <span style={{ fontWeight: 'bolder'}}>Fetcher0: </span><span style={{margin:'10px', fontSize: '10px' }}>{aggregatedRs == null || aggregatedRs == undefined || aggregatedRs.length === 0?'':JSON.stringify(aggregatedRs[0].data)}</span><br/>
+                                <span style={{ fontWeight: 'bolder'}}>Fetcher1: </span><span style={{margin:'10px', fontSize: '10px' }}>{aggregatedRs == null || aggregatedRs == undefined || aggregatedRs.length === 0?'':JSON.stringify(aggregatedRs[1].data)}</span><br/>
+                                <span style={{ fontWeight: 'bolder'}}>Fetcher2: </span><span style={{margin:'10px', fontSize: '10px' }}>{aggregatedRs == null || aggregatedRs == undefined || aggregatedRs.length === 0?'':JSON.stringify(aggregatedRs[2].data)}</span><br/>
+                                </p>
                         </Row>
                     </div>
 
                 </Col>
                 <Col span={2}></Col>
-            </Row>
-        </div>
+            </Row >
+        </div >
     </>
 }
