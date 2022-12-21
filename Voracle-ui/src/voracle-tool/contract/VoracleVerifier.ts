@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Field, SmartContract, state, State, method, Struct, DeployArgs, Permissions, PublicKey, Poseidon, CircuitString, Signature, Bool, Circuit, UInt32 } from 'snarkyjs';
-import { Voracle } from "./Voracle.js";
+import { Voracle } from "./Voracle";
 
 export class VoracleVerifier extends SmartContract {
   @state(PublicKey) voracleAddr = State<PublicKey>();
