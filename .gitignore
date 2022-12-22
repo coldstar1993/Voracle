@@ -12,8 +12,4 @@
 
 # Never commit keys to Git!
 keys
-**/*/*.lock
-**/*/package-lock.json
-keys
-
 1.git
