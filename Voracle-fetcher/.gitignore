@@ -104,5 +104,3 @@ dist
 .tern-port
 .env.local
 build/
-package-lock.json
-yarn.lock
